@@ -1,32 +1,49 @@
 #include <iostream>
 #include <curses.h>
 #include <wiringPi.h>
+#include <sstream>
+#include <string>
 int main(int argc, char* argv[])
 {
 	//Allocate Screen Memory
 	initscr();
-	
+
 	//Change Terminal Resolution
 	resizeterm(50, 50);
-	
-	
+
+	int num = 0;
+
 	//------
-	//Remove all from screen
-	clear();
-	
 	//Make Changes
 	//TODO
-		
-	move(10,10);
-	printw("Hello World");
-	
-	//Render
-	refresh();
-	
-	
-	//TEMP GETCH
-	getch();
-	
+
+	while(true)
+    {
+        //HANDLE STEP
+
+        //Update step
+        num++;
+
+        std::stringstream ss;
+        ss << num;
+        string str = ss.str();
+
+        //RENDER STEP
+
+        //Clear screen from old clutter
+        clear();
+
+        //Render relevant parts
+        move(10,10);
+        printw("Hello World");
+
+        move(12,12);
+        printw(str.c_str());
+
+        //Render
+        refresh();
+
+    }
 	//Free Memory
 	endwin();
 
