@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 
         std::stringstream ss;
         ss << num;
-        string str = ss.str();
+        std::string str = ss.str();
 
         //RENDER STEP
 
