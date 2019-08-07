@@ -31,11 +31,12 @@ int main(int argc, char* argv[])
         //RENDER STEP
 
         //Clear screen from old clutter
+        move(10,10);
+        printw("Hello World");
+
         clear();
 
         //Render relevant parts
-        move(10,10);
-        printw("Hello World");
 
         move(12,12);
         printw(str.c_str());

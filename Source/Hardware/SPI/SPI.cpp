@@ -2,12 +2,12 @@
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
 #include <iostream>
-MA3::MA3()
+SPI::SPI()
 {
     m_channel_config = 8;
 }
 
-bool MA3::init(int spi_channel)
+bool SPI::init(int spi_channel)
 {
     //Load SPI Drivers (Not required as GPIO is native to PI)
     //And activated via Raspi-config instead
@@ -21,7 +21,11 @@ bool MA3::init(int spi_channel)
     }
     */
 
-    m_file_descriptor = wiringPiSPISetup(spi_channel, 1000000);
+    //Pi Channel (Has two, 0 & 1)
+    //MAY NEED TO CHANGE ON MULTIPLE CONNECTIONS
+    int spi_clock_hz = 1000000;
+
+    m_file_descriptor = wiringPiSPISetup(0, 1000000);
     if(m_file_descriptor < 0)
     {
             std::cout << "Failed to open SPI BUS" << std::endl;
@@ -36,7 +40,7 @@ bool MA3::init(int spi_channel)
 
 }
 
-int MA3::read(int spi_channel)
+int SPI::read(int spi_channel)
 {
     if(m_initialized)
     {
