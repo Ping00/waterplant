@@ -6,6 +6,9 @@ class Engine
 		//swap to Unique ptr once we have multiple views to swap between
 		bool		m_init;
 
+		//GUI
+		//Controller
+
 	public:
 		Engine();
 		~Engine();
