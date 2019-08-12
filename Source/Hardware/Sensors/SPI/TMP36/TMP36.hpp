@@ -12,8 +12,13 @@ class TMP36
 		TMP36();
 		~TMP36();
 		
-		void init();
+		void init(int m_tickrate, MCP3008& master);
 		void run();
 		void fetch();
+		
+		void set_tickerate(int rate);
+
+		void get_tickrate();
+		void get_initialized();
 };
 #endif // !__TMP36_HPP__
