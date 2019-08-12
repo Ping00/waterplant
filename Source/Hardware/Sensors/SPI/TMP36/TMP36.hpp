@@ -1,7 +1,11 @@
 #ifndef __TMP36_HPP__
 #define __TMP36_HPP__
-class TMP36
+#include "../SPI_SENSOR/SPI_SENSOR.hpp"
+class TMP36 : public SPI_SENSOR
 {
+	private:
+
+
 	public:
 		TMP36();
 		~TMP36();

@@ -4,6 +4,7 @@ class MCP3008
 {
 	private:
 
+
 	public:
 		MCP3008();
 		~MCP3008();
