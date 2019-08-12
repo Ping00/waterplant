@@ -10,6 +10,8 @@ class SPI_SENSOR
 		bool			m_initialized;
 		int				m_channel;
 
+		MCP3008*		m_master_ADC_device;
+
 	public:
 		SPI_SENSOR();
 		virtual ~SPI_SENSOR();
