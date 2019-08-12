@@ -5,7 +5,6 @@ class TMP36 : public SPI_SENSOR
 {
 	private:
 
-
 	public:
 		TMP36();
 		~TMP36();
