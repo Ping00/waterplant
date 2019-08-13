@@ -8,13 +8,13 @@ GUI::GUI()
 
 GUI::~GUI()
 {
-
 	
 }
 
-void GUI::init()
+bool GUI::init()
 {
-
+	m_initialized = true;
+	return m_initialized;
 }
 
 void GUI::handle()

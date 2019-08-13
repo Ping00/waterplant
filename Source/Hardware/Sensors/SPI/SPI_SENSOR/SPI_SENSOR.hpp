@@ -1,16 +1,15 @@
 #ifndef __SPI_SENSOR_HPP__
 #define __SPI_SENSOR_HPP__
 #include <thread>
-#include <mutex>
+#include <memory>
 class SPI_SENSOR
 {
 	private:
-		std::mutex		m_mutex;
-		std::thread		m_thread;
-		bool			m_initialized;
-		int				m_channel;
+		std::thread						m_thread;
+		bool							m_initialized;
 
-		MCP3008*		m_master_ADC_device;
+		int								m_channel;
+		std::shared_ptr<MCP3008>		m_master_mcp3008;
 
 	public:
 		SPI_SENSOR();

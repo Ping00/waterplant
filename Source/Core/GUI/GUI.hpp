@@ -3,13 +3,14 @@
 class GUI
 {
 	private:
+		bool					m_initialized;
 		std::unique_ptr<GUI>	m_gui;
 
 	public:
 		GUI();
 		~GUI();
 
-		void init();
+		bool init();
 
 		void handle();
 		void update();
