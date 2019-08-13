@@ -3,13 +3,16 @@
 class GUI
 {
 	private:
+		std::unique_ptr<GUI>	m_gui;
 
 	public:
 		GUI();
-		virtual ~GUI();
+		~GUI();
 
-		virtual void handle() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
+		void init();
+
+		virtual void handle();
+		virtual void update();
+		virtual void render();
 };
 #endif // !__GUI_HPP__

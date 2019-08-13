@@ -7,7 +7,7 @@ class Engine
 	private:
 		//swap to Unique ptr once we have multiple views to swap between
 		bool		m_initialized;
-		std::unique_ptr<GUI> m_gui;
+		GUI			m_gui;
 
 		//Controller
 
