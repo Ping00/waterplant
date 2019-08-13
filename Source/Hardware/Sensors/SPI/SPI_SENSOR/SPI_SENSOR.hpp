@@ -15,8 +15,8 @@ class SPI_SENSOR
 		SPI_SENSOR();
 		virtual ~SPI_SENSOR();
 
-		bool init(int channel);
+		bool init(int channel, MCP3008 master);
 		void run();
-		void read() = 0;
+		void write() = 0;
 };
 #endif // !__SPI_SENSOR_HPP__

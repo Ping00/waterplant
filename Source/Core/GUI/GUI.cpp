@@ -16,7 +16,7 @@ GUI::~GUI()
 
 bool GUI::init()
 {
-	m_gui = new GUI_Startup();
+	//make unique
 	m_initialized = true;
 	return m_initialized;
 }

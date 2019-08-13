@@ -18,7 +18,7 @@ bool Engine::init()
 {
 	//Init Engine and subsystems
 	//Assign GUI to startup
-	m_gui.init();
+	//m_gui.init();
 	m_controller.init();
 
 	m_initialized = true;
