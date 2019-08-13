@@ -1,5 +1,5 @@
 #include "GUI.hpp"
-#include <iostream>
+#include "States/GUI_Overview.hpp"
 #include "curses.h"
 GUI::GUI()
 {
@@ -8,11 +8,15 @@ GUI::GUI()
 
 GUI::~GUI()
 {
-	
+	if (!m_initialized)
+	{
+		//Free memory if initialized properly
+	}
 }
 
 bool GUI::init()
 {
+	m_gui = new GUI_Startup();
 	m_initialized = true;
 	return m_initialized;
 }
