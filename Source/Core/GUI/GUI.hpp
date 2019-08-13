@@ -11,8 +11,8 @@ class GUI
 
 		void init();
 
-		virtual void handle();
-		virtual void update();
-		virtual void render();
+		void handle();
+		void update();
+		void render();
 };
 #endif // !__GUI_HPP__

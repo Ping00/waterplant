@@ -2,16 +2,13 @@
 #define __ENGINE_HPP__
 #include <memory>
 #include "../GUI/GUI.hpp"
+#include "../Controller/controller.hpp"
 class Engine
 {
 	private:
-		//swap to Unique ptr once we have multiple views to swap between
 		bool		m_initialized;
 		GUI			m_gui;
-
-		//Controller
-
-		int temp = 0;
+		Controller	m_controller;
 
 	public:
 		Engine();

@@ -1,6 +1,6 @@
 #ifndef __GUI_OVERVIEW_HPP__
 #define __GUI_OVERVIEW_HPP__
-#include "../GUI.hpp"
+#include "GUI_BASE.hpp"
 class GUI_Overview : public GUI_BASE
 {
 	
