@@ -5,20 +5,23 @@
 #include "../GUI/States/GUI_Overview.hpp"
 Engine::Engine()
 {
-	std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
+	//std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
 	m_initialized = false;
 	m_gui = nullptr;
 }
 
 Engine::~Engine()
 {
-	std::cout << "Destructor called for Engine :> (" << this << ")" << std::endl;
+	//std::cout << "Destructor called for Engine :> (" << this << ")" << std::endl;
 }
 
 bool Engine::init()
 {
 	//Init Engine and subsystems
+	//Assign GUI to startup
 	m_gui = std::make_unique<GUI_Startup>();
+
+
 	m_initialized = true;
 	return m_initialized;
 }
@@ -30,22 +33,15 @@ bool Engine::running()
 
 void Engine::handle()
 {
-
+	m_gui.get()->handle();
 }
 
 void Engine::update()
 {
-	temp++;
-	if (temp == 10) m_gui = std::make_unique<GUI_Overview>();
-	if (temp >= 20) m_initialized = false;
+	m_gui.get()->update();
 }
 
 void Engine::render()
 {
-	std::cout << "X: " << temp << std::endl;
-	std::cout << "Engine (Render)" << std::endl;
-	if (m_gui != nullptr)
-	{
-		m_gui.get()->render();
-	}
+	m_gui.get()->render();
 }
