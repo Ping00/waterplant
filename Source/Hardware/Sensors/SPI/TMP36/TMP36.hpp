@@ -1,10 +1,9 @@
 #ifndef __TMP36_HPP__
 #define __TMP36_HPP__
-#include <thread>
-class TMP36
+#include "../SPI_SENSOR/SPI_SENSOR.hpp"
+class TMP36 : public SPI_SENSOR
 {
 	private:
-		std::thread	m_thread;
 
 	public:
 		TMP36();

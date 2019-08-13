@@ -2,6 +2,7 @@
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
 #include <iostream>
+#include "SPI_SENSOR.hpp"
 SPI::SPI()
 {
     m_channel_config = 8;
@@ -55,4 +56,19 @@ int SPI::read(int spi_channel)
         return -1;
     }
 
+}
+
+SPI_SENSOR::SPI_SENSOR()
+{
+
+}
+
+SPI_SENSOR::~SPI_SENSOR()
+{
+
+}
+
+bool SPI_SENSOR::init(int channel, MCP3008 master)
+{
+	return false;
 }
