@@ -14,6 +14,8 @@ class Engine
 		//GUI
 		//Controller
 
+		int temp = 0;
+
 	public:
 		Engine();
 		~Engine();
