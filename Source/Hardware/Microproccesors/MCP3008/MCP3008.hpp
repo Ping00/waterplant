@@ -1,13 +1,11 @@
 #ifndef __MCP3008_HPP__
 #define __MCP3008_HPP__
-#include "../../Sensors/SPI/TMP36/TMP36.hpp
+
 class MCP3008
 {
 	private:
 		int			m_spi_channel;
 		int			m_clock_speed_hz;
-
-		TMP36		m_sensor;
 	
 
 	public:
