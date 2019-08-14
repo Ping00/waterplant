@@ -17,11 +17,10 @@ void GUI_Startup::handle()
 
 void GUI_Startup::update()
 {
-	m_engine_online_status = "ENGINE : [ OK ]";
+	
 }
 
 void GUI_Startup::render()
 {
-	move(1, 2);
-	printw(m_engine_online_status.c_str());
+
 }
