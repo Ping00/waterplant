@@ -18,13 +18,13 @@ bool MCP3008::init(int channel, int clock)
 
 int MCP3008::get_data()
 {
-	std::lock_guard<std::mutex> guard(m_mutex);
+	std::shared_lock<std::shared_mutex> lock(m_mutex);
 	return m_data;
 }
 
 void MCP3008::write(int data)
 {
-	std::lock_guard<std::mutex> guard(m_mutex);
+	std::unique_lock<std::shared_mutex> lock(m_mutex);
 	m_data = data;
 }
 
