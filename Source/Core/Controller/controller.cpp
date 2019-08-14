@@ -32,5 +32,5 @@ void Controller::run()
 
 void Controller::check()
 {
-	m_mcp3008.get_data();
+	m_mcp3008.get_data(0);
 }
