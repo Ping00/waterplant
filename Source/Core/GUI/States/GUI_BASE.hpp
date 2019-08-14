@@ -8,8 +8,6 @@ class GUI_BASE
 		GUI_BASE();
 		virtual ~GUI_BASE();
 
-		void init();
-
 		virtual void handle() = 0;
 		virtual void update() = 0;
 		virtual void render() = 0;

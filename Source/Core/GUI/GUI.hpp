@@ -1,6 +1,7 @@
 #ifndef __GUI_HPP__
 #define __GUI_HPP__
 #include "States/GUI_BASE.hpp"
+#include <memory>
 class GUI
 {
 	private:

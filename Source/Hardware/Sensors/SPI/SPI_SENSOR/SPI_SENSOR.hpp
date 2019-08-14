@@ -10,7 +10,6 @@ class SPI_SENSOR
 		bool							m_initialized;
 
 		int								m_channel;
-		std::shared_ptr<MCP3008>		m_master_mcp3008;
 		
 		virtual void convert() = 0;
 
@@ -18,7 +17,7 @@ class SPI_SENSOR
 		SPI_SENSOR();
 		virtual ~SPI_SENSOR();
 
-		bool init(int channel, MCP3008 master);
+		bool init(int channel);
 		void run();
 		void write();
 };

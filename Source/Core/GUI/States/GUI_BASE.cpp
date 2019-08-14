@@ -1,18 +1,12 @@
-#include "GUI.hpp"
+#include "GUI_BASE.hpp"
 #include <iostream>
 #include "curses.h"
-GUI::GUI()
+GUI_BASE::GUI_BASE()
 {
-	std::cout << "Constructor called for GUI :> (" << this << ")" << std::endl;
+
 }
 
-GUI::~GUI()
+GUI_BASE::~GUI_BASE()
 {
-	std::cout << "Destructor called for GUI :> (" << this << ")" << std::endl;
-}
 
-void GUI::init()
-{
-	std::cout << "INit" << std::endl;
-	initscr();
 }
