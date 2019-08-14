@@ -5,7 +5,7 @@
 #include "../GUI/States/GUI_Overview.hpp"
 Engine::Engine()
 {
-	std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
+	//std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
 	m_initialized = false;
 }
 
@@ -17,8 +17,7 @@ Engine::~Engine()
 bool Engine::init()
 {
 	//Init Engine and subsystems
-	//Assign GUI to startup
-	//m_gui.init();
+	m_gui.init();
 	m_controller.init();
 
 	m_initialized = true;

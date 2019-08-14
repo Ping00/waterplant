@@ -1,10 +1,12 @@
 #ifndef __GUI_STARTUP_HPP__
 #define __GUI_STARTUP_HPP__
-#include "../GUI.hpp"
-class GUI_Startup : public GUI
+#include "GUI_BASE.hpp"
+#include <string>
+class GUI_Startup : public GUI_BASE
 {
 	private:
 		//GUI Components /Bars, Menus, Texts, etc.
+		
 
 	public:
 		GUI_Startup();
