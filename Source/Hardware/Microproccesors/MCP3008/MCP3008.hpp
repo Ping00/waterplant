@@ -9,6 +9,9 @@ class MCP3008
 		int			m_spi_channel;
 		int			m_clock_speed_hz;
 
+		TMP36		m_tmp36;
+
+		double		m_data;
 
 		//double		m_spi_data[8];
 		//SPI_SENSOR	m_spi_sensor[8];
