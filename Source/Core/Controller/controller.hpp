@@ -12,6 +12,8 @@ class Controller
 		MCP3008			m_mcp3008;
 		Valve			m_valve;
 
+		int				m_tickrate;
+
 
 	public:
 		Controller();
@@ -20,6 +22,6 @@ class Controller
 		bool init();
 
 		void run();
-		void update();
+		void check();
 };
 #endif // !__CONTROLLER_HPP__

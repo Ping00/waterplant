@@ -11,10 +11,11 @@ class MCP3008
 		int			m_spi_channel;
 		int			m_clock_speed_hz;
 
+		std::shared_mutex m_mutex;
+
 		TMP36		m_tmp36;
 		int			m_data;
 
-		 std::shared_mutex m_mutex;
 
 		//double		m_spi_data[8];
 		//SPI_SENSOR	m_spi_sensor[8];
