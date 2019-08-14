@@ -10,7 +10,7 @@ TMP36::TMP36()
 
 TMP36::~TMP36()
 {
-
+	if(m_initialized) 	m_thread.join();
 }
 
 bool TMP36::init(int channel, MCP3008* master)

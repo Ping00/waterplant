@@ -9,7 +9,7 @@ Controller::Controller()
 
 Controller::~Controller()
 {
-	//m_thread.join();
+	if (m_initialized) 	m_thread.join();
 }
 
 bool Controller::init()

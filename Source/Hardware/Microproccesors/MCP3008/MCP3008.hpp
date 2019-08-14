@@ -6,20 +6,18 @@
 class MCP3008
 {
 	private:
-		bool		m_initialized;
+		bool				m_initialized;
 
-		int			m_spi_channel;
-		int			m_clock_speed_hz;
+		int					m_spi_channel;
+		int					m_clock_speed_hz;
 
-		std::shared_mutex m_mutex;
+		std::shared_mutex	m_mutex;
 
-		TMP36		m_tmp36;
-		int			m_data;
+		TMP36				m_tmp36;
 
-
-		//double		m_spi_data[8];
+		double				m_spi_data[8];
+		bool				m_spi_active[8];
 		//SPI_SENSOR	m_spi_sensor[8];
-		//bool			m_spi_active[8];
 	
 
 	public:
@@ -31,7 +29,7 @@ class MCP3008
 		//void add_sensor(int channel);
 		//void remove_sensor(int channel);
 
-		int get_data();
-		void write(int data);
+		double get_data(int channel);
+		void write(int channel, double data);
 };
 #endif // !__MCP3008_HPP__
