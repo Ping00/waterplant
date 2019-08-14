@@ -1,7 +1,9 @@
 #include "controller.hpp"
-
+#include <iostream>
 Controller::Controller()
 {
+	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
+	m_initialized = false;
 }
 
 Controller::~Controller()
@@ -12,6 +14,7 @@ Controller::~Controller()
 bool Controller::init()
 {
 	//Create thread
+	m_mcp3008.init(0, 1000000);
 	m_initialized = true;
 	return false;
 }

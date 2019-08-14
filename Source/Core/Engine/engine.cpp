@@ -5,7 +5,7 @@
 #include "../GUI/States/GUI_Overview.hpp"
 Engine::Engine()
 {
-	//std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
+	std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
 	m_initialized = false;
 }
 

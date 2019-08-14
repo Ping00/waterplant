@@ -1,6 +1,7 @@
 #ifndef __TMP36_HPP__
 #define __TMP36_HPP__
 #include <thread>
+
 class TMP36
 {
 	private:
@@ -13,7 +14,7 @@ class TMP36
 		TMP36();
 		~TMP36();
 
-		void init(int channel);
+		bool init(int channel);
 		void run();
 		void write();
 
