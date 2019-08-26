@@ -10,7 +10,24 @@ GUI_Startup::GUI_Startup()
 	m_version.set_message_color(2);
 	m_version.set_position(2, 1);
 
+	std::vector<std::string> graphic;
+	graphic.push_back("__          __   _                  _             _   ");
+	graphic.push_back("\\\ \\\        / /  | |                | |           | |  ");
+	graphic.push_back(" \\\ \\\  /\\\  / /_ _| |_ ___ _ __ _ __ | | __ _ _ __ | |_ ");
+	graphic.push_back("  \\\ \\\/  \\\/ / _` | __/ _ \\\ '__| '_ \\\| |/ _` | '_ \\\| __|");
+	graphic.push_back("   \\\  /\\\  / (_| | ||  __/ |  | |_) | | (_| | | | | |_ ");
+	graphic.push_back("    \\\/  \\\/ \\\__,_|\\\__\\\___|_|  | .__/|_|\\\__,_|_| |_|\\\__|");
+	graphic.push_back("                             | |                      ");
+	graphic.push_back("                             |_|                      ");
 
+	for (int i = 0; i < graphic.size(); i++)
+	{
+		Display_Component x;
+		x.set_position(10, 10 + i);
+		x.set_message_max_length(60);
+		x.set_message(graphic[i]);
+		m_titlecard.push_back(x);
+	}
 
 /*
  __          __   _                  _             _   
