@@ -10,7 +10,9 @@ class GUI_Startup : public GUI_BASE
 		Display_Component	m_version;
 		std::vector<Display_Component>	m_titlecard;
 
+		Display_Component test;
 
+		int	m_input;
 
 	public:
 		GUI_Startup();

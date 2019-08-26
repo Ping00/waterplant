@@ -1,9 +1,10 @@
 #include "GUI_Startup.hpp"
 #include <iostream>
 #include "curses.h"
+#include "../../../Utilities/Enums/INPUT_KEYS.hpp"
 GUI_Startup::GUI_Startup()
 {
-	std::cout << "Constructor called for GUI_Startup :> (" << this << ")" << std::endl;
+	//std::cout << "Constructor called for GUI_Startup :> (" << this << ")" << std::endl;
 
 	m_version.set_message_max_length(30);
 	m_version.set_message("Waterplant v0.2");
@@ -23,23 +24,15 @@ GUI_Startup::GUI_Startup()
 	for (int i = 0; i < graphic.size(); i++)
 	{
 		Display_Component x;
-		x.set_position(10, 10 + i);
+		x.set_position(30, 10 + i);
 		x.set_message_max_length(60);
 		x.set_message(graphic[i]);
 		m_titlecard.push_back(x);
 	}
 
-/*
- __          __   _                  _             _   
- \ \        / /  | |                | |           | |  
-  \ \  /\  / /_ _| |_ ___ _ __ _ __ | | __ _ _ __ | |_ 
-   \ \/  \/ / _` | __/ _ \ '__| '_ \| |/ _` | '_ \| __|
-    \  /\  / (_| | ||  __/ |  | |_) | | (_| | | | | |_ 
-     \/  \/ \__,_|\__\___|_|  | .__/|_|\__,_|_| |_|\__|
-                              | |                      
-                              |_|                      
-
-							  */
+	test.set_message_max_length(20);
+	test.set_position(2, 3);
+	m_input = 0;
 }
 
 GUI_Startup::~GUI_Startup()
@@ -49,12 +42,16 @@ GUI_Startup::~GUI_Startup()
 
 void GUI_Startup::handle()
 {
-
+	m_input = getch();
 }
 
 void GUI_Startup::update()
 {
 
+	if (m_input == INPUT_KEY_ENTER)
+	{
+		test.set_message("ENTER");
+	}
 }
 
 void GUI_Startup::render()
@@ -64,4 +61,5 @@ void GUI_Startup::render()
 	{
 		m_titlecard[i].render();
 	}
+	test.render();
 }
