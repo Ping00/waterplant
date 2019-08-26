@@ -2,6 +2,8 @@
 #include <iostream>
 #include "curses.h"
 #include "../../../Utilities/Enums/INPUT_KEYS.hpp"
+#include "../States/GUI_BASE.hpp"
+#include "../States/GUI_Overview.hpp"
 GUI_Startup::GUI_Startup()
 {
 	//std::cout << "Constructor called for GUI_Startup :> (" << this << ")" << std::endl;
@@ -52,6 +54,7 @@ void GUI_Startup::update()
 	if (m_timer >= 50000)
 	{
 		//Return state
+		test.set_message("AAA");
 	}
 }
 
