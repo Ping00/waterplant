@@ -33,7 +33,6 @@ bool GUI::init()
 	if (m_gui == nullptr) return false;
 
 
-
 	m_initialized = true;
 	return m_initialized;
 }
