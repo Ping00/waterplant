@@ -12,7 +12,7 @@ class GUI_Startup : public GUI_BASE
 
 		Display_Component test;
 
-		int	m_input;
+		int	m_timer;
 
 	public:
 		GUI_Startup();

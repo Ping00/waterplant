@@ -5,6 +5,7 @@
 GUI_Startup::GUI_Startup()
 {
 	//std::cout << "Constructor called for GUI_Startup :> (" << this << ")" << std::endl;
+	//Could potentially read and build from .config file (TODO?)
 
 	m_version.set_message_max_length(30);
 	m_version.set_message("Waterplant v0.2");
@@ -32,7 +33,7 @@ GUI_Startup::GUI_Startup()
 
 	test.set_message_max_length(20);
 	test.set_position(2, 3);
-	m_input = 0;
+	m_timer = 0;
 }
 
 GUI_Startup::~GUI_Startup()
@@ -42,15 +43,15 @@ GUI_Startup::~GUI_Startup()
 
 void GUI_Startup::handle()
 {
-	m_input = getch();
+	//m_input = getch();
 }
 
 void GUI_Startup::update()
 {
-
-	if (m_input == INPUT_KEY_ENTER)
+	m_timer++;
+	if (m_timer >= 50000)
 	{
-		test.set_message("ENTER");
+		//Return state
 	}
 }
 
