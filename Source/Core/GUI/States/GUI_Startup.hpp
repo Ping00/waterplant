@@ -7,7 +7,8 @@ class GUI_Startup : public GUI_BASE
 {
 	private:
 		//GUI Components /Bars, Menus, Texts, etc.
-
+		Display_Component	m_version;
+		Display_Component	m_valve_status;
 
 	public:
 		GUI_Startup();

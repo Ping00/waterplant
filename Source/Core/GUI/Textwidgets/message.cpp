@@ -10,7 +10,7 @@ Message::~Message()
 {
 }
 
-void Message::set_length(int length)
+void Message::set_max_length(int length)
 {
 	m_message_length = length;
 }

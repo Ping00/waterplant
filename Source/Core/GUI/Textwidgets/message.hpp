@@ -11,7 +11,7 @@ class Message
 		Message();
 		~Message();
 		
-		void set_length(int length);
+		void set_max_length(int length);
 		void set_message(std::string message);
 		void set_message(int message);
 		std::string get_message();

@@ -3,7 +3,8 @@
 #include "GUI_BASE.hpp"
 class GUI_Overview : public GUI_BASE
 {
-	
+	private:
+
 	public:
 		GUI_Overview();
 		~GUI_Overview();

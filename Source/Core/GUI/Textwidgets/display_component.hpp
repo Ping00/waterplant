@@ -15,7 +15,7 @@ class Display_Component
 
 		void set_message(std::string message);
 		void set_message(int message);
-		void set_message_length(int length);
+		void set_message_max_length(int length);
 		void set_position(int x, int y);
 		void set_message_color(int color);
 		void render();

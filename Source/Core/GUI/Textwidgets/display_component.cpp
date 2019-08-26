@@ -20,9 +20,9 @@ void Display_Component::set_message(int message)
 	m_message.set_message(message);
 }
 
-void Display_Component::set_message_length(int length)
+void Display_Component::set_message_max_length(int length)
 {
-	m_message.set_length(length);
+	m_message.set_max_length(length);
 }
 
 void Display_Component::set_position(int x, int y)
