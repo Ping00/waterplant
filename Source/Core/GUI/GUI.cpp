@@ -39,16 +39,19 @@ bool GUI::init()
 
 void GUI::handle()
 {
-	m_gui.get()->handle();
+	if (m_gui != nullptr) 
+		m_gui.get()->handle();
 }
 
 void GUI::update()
 {
-	m_gui.get()->update();
+	if (m_gui != nullptr)
+		m_gui.get()->update();
 }
 
 void GUI::render()
 {
-	m_gui.get()->render();
+	if (m_gui != nullptr)
+		m_gui.get()->render();
 	refresh();
 }
