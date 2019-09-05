@@ -2,6 +2,7 @@
 #include "States/GUI_Startup.hpp"
 #include <iostream>
 #include "curses.h"
+#include "GUI_COLORS.hpp"
 GUI::GUI()
 {
 	std::cout << "Constructor called for GUI :> (" << this << ")" << std::endl;
@@ -24,10 +25,8 @@ bool GUI::init()
 	noecho();
 	curs_set(0);
 	nodelay(stdscr, TRUE);
-	start_color();
-
-	init_pair(BLUE, COLOR_GREEN, COLOR_BLACK);
-
+	
+	init_colors();
 
 	m_gui = std::make_unique<GUI_Startup>();
 	if (m_gui == nullptr) return false;
@@ -56,4 +55,15 @@ void GUI::render()
 		m_gui.get()->render();
 
 	refresh();
+}
+
+void GUI::init_colors()
+{
+	start_color();
+
+	//Set color combinations according to enum list
+	init_pair(2, COLOR_WHITE, COLOR_BLUE);
+
+	//Set default background color
+	wbkgd(stdscr, COLOR_PAIR(2));
 }

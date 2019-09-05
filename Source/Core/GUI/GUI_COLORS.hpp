@@ -1,7 +1,10 @@
-#ifndef __ENUM_COLORS__
-#define __ENUM_COLORS__
+#ifndef __GUI_COLORS__
+#define __GUI_COLORS__
 enum GUI_COLORS
 {
-	INPUT_KEY_ENTER = 10
+	//Foreground + Background
+	WHITE_BLUE = 1,
+	RED_BLUE = 2,
+	YELLOW_BLUE = 3
 };
-#endif // !__ENUM_COLORS__
+#endif // !__GUI_COLORS__

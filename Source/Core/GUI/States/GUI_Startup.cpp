@@ -1,7 +1,6 @@
 #include "GUI_Startup.hpp"
 #include <iostream>
 #include "curses.h"
-#include "../../../Utilities/Enums/INPUT_KEYS.hpp"
 #include "../States/GUI_BASE.hpp"
 #include "../States/GUI_Overview.hpp"
 GUI_Startup::GUI_Startup()

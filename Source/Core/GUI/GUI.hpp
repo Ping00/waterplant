@@ -8,6 +8,8 @@ class GUI
 		bool						m_initialized;
 		std::unique_ptr<GUI_BASE>	m_gui;
 
+		void init_colors();
+
 	public:
 		GUI();
 		~GUI();
