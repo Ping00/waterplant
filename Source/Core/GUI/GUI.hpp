@@ -2,6 +2,7 @@
 #define __GUI_HPP__
 #include "States/GUI_BASE.hpp"
 #include <memory>
+#include <queue>
 class GUI
 {
 	private:
