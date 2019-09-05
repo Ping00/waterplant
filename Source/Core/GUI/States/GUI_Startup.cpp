@@ -37,7 +37,11 @@ void GUI_Startup::handle()
 
 void GUI_Startup::update()
 {
-
+	m_timer++;
+	if (m_timer == 40000)
+	{
+		m_build.set_message("TIMER");
+	}
 }
 
 void GUI_Startup::render()

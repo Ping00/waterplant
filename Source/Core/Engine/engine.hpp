@@ -7,7 +7,7 @@ class Engine
 	private:
 		bool		m_initialized;
 		GUI			m_gui;
-		//Controller	m_controller;
+		Controller	m_controller;
 
 	public:
 		Engine();

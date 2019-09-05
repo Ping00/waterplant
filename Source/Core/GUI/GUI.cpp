@@ -21,13 +21,22 @@ bool GUI::init()
 {
 	//Create our state of our startup view
 	
+	//Init screen
 	initscr();
+	
+	//make so no characters will be written if we type
 	noecho();
+
+	//Remove cursor (Blinking white part)
 	curs_set(0);
+
+	//Set nodelay (Allows for nonblocking async input)
 	nodelay(stdscr, TRUE);
 	
+	//Setup colors
 	init_colors();
 
+	//Create our view
 	m_gui.push(std::make_unique<GUI_Startup>());
 	if (m_gui.top() == nullptr) return false;
 

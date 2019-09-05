@@ -11,11 +11,8 @@ class GUI_Startup : public GUI_BASE
 		Display_Component	m_version;
 		Display_Component	m_build;
 		Graphic				m_titlecard;
-
-
-		std::vector<Display_Component>	m_titlecard_;
-
-		int	m_timer;
+		
+		int m_timer = 0;
 
 	public:
 		GUI_Startup();
