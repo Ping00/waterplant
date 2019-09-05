@@ -2,12 +2,12 @@
 #define __GUI_HPP__
 #include "States/GUI_BASE.hpp"
 #include <memory>
-#include <queue>
+#include <stack>
 class GUI
 {
 	private:
 		bool									m_initialized;
-		std::queue<std::unique_ptr<GUI_BASE>>	m_gui;
+		std::stack<std::unique_ptr<GUI_BASE>>	m_gui;
 
 		void init_colors();
 

@@ -1,6 +1,6 @@
 #ifndef __GUI_BASE_HPP__
 #define __GUI_BASE_HPP__
-#include "../Textwidgets/display_component.hpp"
+#include "../Widgets/display_component.hpp"
 class GUI_BASE
 {
 

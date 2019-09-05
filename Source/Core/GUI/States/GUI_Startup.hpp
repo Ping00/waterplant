@@ -2,7 +2,7 @@
 #define __GUI_STARTUP_HPP__
 #include "GUI_BASE.hpp"
 #include <vector>
-#include "../Textwidgets/display_component.hpp"
+#include "../Widgets/display_component.hpp"
 class GUI_Startup : public GUI_BASE
 {
 	private:

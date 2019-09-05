@@ -2,7 +2,6 @@
 #include "States/GUI_Startup.hpp"
 #include <iostream>
 #include "curses.h"
-#include "GUI_COLORS.hpp"
 GUI::GUI()
 {
 	std::cout << "Constructor called for GUI :> (" << this << ")" << std::endl;
@@ -29,7 +28,7 @@ bool GUI::init()
 	init_colors();
 
 	m_gui.push(std::make_unique<GUI_Startup>());
-	if (m_gui.front() == nullptr) return false;
+	if (m_gui.top() == nullptr) return false;
 
 
 	m_initialized = true;
@@ -38,21 +37,21 @@ bool GUI::init()
 
 void GUI::handle()
 {
-	if (m_gui.front() != nullptr)
-		m_gui.front().get()->handle();
+	if (m_gui.top() != nullptr)
+		m_gui.top().get()->handle();
 }
 
 void GUI::update()
 {
-	if (m_gui.front() != nullptr)
-		m_gui.front().get()->update();
+	if (m_gui.top() != nullptr)
+		m_gui.top().get()->update();
 
 }
 
 void GUI::render()
 {
-	if (m_gui.front() != nullptr)
-		m_gui.front().get()->render();
+	if (m_gui.top() != nullptr)
+		m_gui.top().get()->render();
 
 	refresh();
 }

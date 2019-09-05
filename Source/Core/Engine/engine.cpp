@@ -2,7 +2,6 @@
 #include "engine.hpp"
 #include "../GUI/GUI.hpp"
 #include "../GUI/States/GUI_Startup.hpp"
-#include "../GUI/States/GUI_Overview.hpp"
 Engine::Engine()
 {
 	//std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
@@ -18,7 +17,7 @@ bool Engine::init()
 {
 	//Init Engine and subsystems
 	m_gui.init();
-	m_controller.init();
+	//m_controller.init();
 
 	m_initialized = true;
 	return m_initialized;

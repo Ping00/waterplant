@@ -1,6 +1,5 @@
 #ifndef __ENGINE_HPP__
 #define __ENGINE_HPP__
-#include <memory>
 #include "../GUI/GUI.hpp"
 #include "../Controller/controller.hpp"
 class Engine
@@ -8,7 +7,7 @@ class Engine
 	private:
 		bool		m_initialized;
 		GUI			m_gui;
-		Controller	m_controller;
+		//Controller	m_controller;
 
 	public:
 		Engine();
