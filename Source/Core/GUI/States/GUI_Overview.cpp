@@ -15,7 +15,7 @@ void GUI_Overview::handle()
 {
 }
 
-void GUI_Overview::update()
+void GUI_Overview::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
 {
 
 }

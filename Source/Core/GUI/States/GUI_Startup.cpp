@@ -35,12 +35,13 @@ void GUI_Startup::handle()
 	//m_input = getch();
 }
 
-void GUI_Startup::update()
+void GUI_Startup::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
 {
 	m_timer++;
 	if (m_timer == 40000)
 	{
-		m_build.set_message("TIMER");
+		clear();
+		stack.push(std::make_unique<GUI_Overview>());
 	}
 }
 

@@ -10,7 +10,7 @@ GUI::GUI()
 
 GUI::~GUI()
 {
-	if (!m_initialized)
+	if (m_initialized)
 	{
 		//Free memory if initialized properly
 		endwin();
@@ -54,7 +54,7 @@ void GUI::handle()
 void GUI::update()
 {
 	if (m_gui.top() != nullptr)
-		m_gui.top().get()->update();
+		m_gui.top().get()->update(m_gui);
 
 }
 

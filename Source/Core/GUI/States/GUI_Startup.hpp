@@ -19,7 +19,7 @@ class GUI_Startup : public GUI_BASE
 		~GUI_Startup();
 
 		void handle();
-		void update();
+		void update(std::stack<std::unique_ptr<GUI_BASE>>& stack);
 		void render();
 
 };
