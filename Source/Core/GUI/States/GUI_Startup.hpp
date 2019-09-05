@@ -3,14 +3,17 @@
 #include "GUI_BASE.hpp"
 #include <vector>
 #include "../Widgets/display_component.hpp"
+#include "../Widgets/graphic.hpp"
 class GUI_Startup : public GUI_BASE
 {
 	private:
 		//GUI Components /Bars, Menus, Texts, etc.
 		Display_Component	m_version;
-		std::vector<Display_Component>	m_titlecard;
+		Display_Component	m_build;
+		Graphic				m_titlecard;
 
-		Display_Component test;
+
+		std::vector<Display_Component>	m_titlecard_;
 
 		int	m_timer;
 
