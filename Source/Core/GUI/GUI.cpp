@@ -2,6 +2,7 @@
 #include "States/GUI_Startup.hpp"
 #include <iostream>
 #include "curses.h"
+#include "Enums/GUI_COLORS.hpp"
 GUI::GUI()
 {
 	std::cout << "Constructor called for GUI :> (" << this << ")" << std::endl;
@@ -61,8 +62,9 @@ void GUI::init_colors()
 	start_color();
 
 	//Set color combinations according to enum list
-	init_pair(2, COLOR_WHITE, COLOR_BLUE);
+	init_pair(GUI_COLOR_WHITE_BLUE, COLOR_WHITE, COLOR_BLUE);
+	init_pair(GUI_COLOR_BLACK_BLUE, COLOR_BLACK, COLOR_BLUE);
 
 	//Set default background color
-	wbkgd(stdscr, COLOR_PAIR(2));
+	wbkgd(stdscr, COLOR_PAIR(GUI_COLOR_WHITE_BLUE));
 }

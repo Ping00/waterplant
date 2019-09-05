@@ -3,8 +3,8 @@
 enum GUI_COLORS
 {
 	//Foreground + Background
-	WHITE_BLUE = 1,
-	RED_BLUE = 2,
-	YELLOW_BLUE = 3
+	GUI_COLOR_WHITE_BLUE = 1,
+	GUI_COLOR_RED_BLUE = 2,
+	GUI_COLOR_BLACK_BLUE = 3
 };
 #endif // !__GUI_COLORS__
