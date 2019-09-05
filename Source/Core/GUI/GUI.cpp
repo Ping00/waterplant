@@ -26,7 +26,7 @@ bool GUI::init()
 	nodelay(stdscr, TRUE);
 	start_color();
 
-	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	init_pair(BLUE, COLOR_GREEN, COLOR_BLACK);
 
 
 	m_gui = std::make_unique<GUI_Startup>();
