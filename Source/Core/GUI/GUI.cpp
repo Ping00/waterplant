@@ -40,9 +40,7 @@ bool GUI::init()
 void GUI::handle()
 {
 	if (m_gui != nullptr)
-	{
 		m_gui.get()->handle();
-	}
 }
 
 void GUI::update()
@@ -56,5 +54,6 @@ void GUI::render()
 {
 	if (m_gui != nullptr)
 		m_gui.get()->render();
+
 	refresh();
 }

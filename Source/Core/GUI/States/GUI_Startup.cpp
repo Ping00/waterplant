@@ -50,12 +50,7 @@ void GUI_Startup::handle()
 
 void GUI_Startup::update()
 {
-	m_timer++;
-	if (m_timer >= 50000)
-	{
-		//Return state
-		test.set_message("AAA");
-	}
+
 }
 
 void GUI_Startup::render()
