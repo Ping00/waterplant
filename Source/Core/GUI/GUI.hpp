@@ -6,8 +6,8 @@
 class GUI
 {
 	private:
-		bool						m_initialized;
-		std::unique_ptr<GUI_BASE>	m_gui;
+		bool									m_initialized;
+		std::queue<std::unique_ptr<GUI_BASE>>	m_gui;
 
 		void init_colors();
 

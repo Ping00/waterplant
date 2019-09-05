@@ -28,8 +28,8 @@ bool GUI::init()
 	
 	init_colors();
 
-	m_gui = std::make_unique<GUI_Startup>();
-	if (m_gui == nullptr) return false;
+	m_gui.push(std::make_unique<GUI_Startup>());
+	if (m_gui.front() == nullptr) return false;
 
 
 	m_initialized = true;
@@ -38,21 +38,21 @@ bool GUI::init()
 
 void GUI::handle()
 {
-	if (m_gui != nullptr)
-		m_gui.get()->handle();
+	if (m_gui.front() != nullptr)
+		m_gui.front().get()->handle();
 }
 
 void GUI::update()
 {
-	if (m_gui != nullptr)
-		m_gui.get()->update();
+	if (m_gui.front() != nullptr)
+		m_gui.front().get()->update();
 
 }
 
 void GUI::render()
 {
-	if (m_gui != nullptr)
-		m_gui.get()->render();
+	if (m_gui.front() != nullptr)
+		m_gui.front().get()->render();
 
 	refresh();
 }
