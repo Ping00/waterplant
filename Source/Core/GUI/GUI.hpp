@@ -8,6 +8,8 @@ class GUI
 	private:
 		bool									m_initialized;
 		std::stack<std::unique_ptr<GUI_BASE>>	m_gui;
+		int										m_input;
+
 
 		void init_colors();
 

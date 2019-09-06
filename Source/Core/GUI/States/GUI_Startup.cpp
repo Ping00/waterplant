@@ -23,6 +23,9 @@ GUI_Startup::GUI_Startup()
 	m_titlecard.set_position(32, 10);
 	m_titlecard.set_color(GUI_COLOR_WHITE_BLUE);
 	m_titlecard.load_graphic("titlecard.graphic");
+
+	m_timer.set_timer_seconds(1);
+	m_timer.start_timer();
 }
 
 GUI_Startup::~GUI_Startup()
@@ -30,15 +33,14 @@ GUI_Startup::~GUI_Startup()
 	//std::cout << "Destructor called for GUI_Startup :> (" << this << ")" << std::endl;
 }
 
-void GUI_Startup::handle()
+void GUI_Startup::handle(int input)
 {
-	//m_input = getch();
+
 }
 
 void GUI_Startup::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
 {
-	m_timer++;
-	if (m_timer == 40000)
+	if (m_timer.check_time())
 	{
 		clear();
 		stack.push(std::make_unique<GUI_Overview>());

@@ -4,6 +4,7 @@
 #include <vector>
 #include "../Widgets/display_component.hpp"
 #include "../Widgets/graphic.hpp"
+#include "../../../Utilities/timer.hpp"
 class GUI_Startup : public GUI_BASE
 {
 	private:
@@ -12,13 +13,13 @@ class GUI_Startup : public GUI_BASE
 		Display_Component	m_build;
 		Graphic				m_titlecard;
 		
-		int m_timer = 0;
+		Timer				m_timer;
 
 	public:
 		GUI_Startup();
 		~GUI_Startup();
 
-		void handle();
+		void handle(int input);
 		void update(std::stack<std::unique_ptr<GUI_BASE>>& stack);
 		void render();
 

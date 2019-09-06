@@ -9,7 +9,7 @@ class GUI_BASE
 		GUI_BASE();
 		virtual ~GUI_BASE();
 
-		virtual void handle() = 0;
+		virtual void handle(int input) = 0;
 		virtual void update(std::stack<std::unique_ptr<GUI_BASE>>& stack) = 0;
 		virtual void render() = 0;
 };

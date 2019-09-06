@@ -33,6 +33,9 @@ bool GUI::init()
 	//Set nodelay (Allows for nonblocking async input)
 	nodelay(stdscr, TRUE);
 	
+	//activate arrowkeys for input
+	keypad(stdscr, TRUE);
+
 	//Setup colors
 	init_colors();
 
@@ -48,7 +51,8 @@ bool GUI::init()
 void GUI::handle()
 {
 	if (m_gui.top() != nullptr)
-		m_gui.top().get()->handle();
+		m_input = getch();
+		m_gui.top().get()->handle(m_input);
 }
 
 void GUI::update()
@@ -73,6 +77,7 @@ void GUI::init_colors()
 	//Set color combinations according to enum list
 	init_pair(GUI_COLOR_WHITE_BLUE, COLOR_WHITE, COLOR_BLUE);
 	init_pair(GUI_COLOR_BLACK_BLUE, COLOR_BLACK, COLOR_BLUE);
+	init_pair(GUI_COLOR_BLUE_WHITE, COLOR_BLUE, COLOR_WHITE);
 
 	//Set default background color
 	wbkgd(stdscr, COLOR_PAIR(GUI_COLOR_WHITE_BLUE));
