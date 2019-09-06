@@ -3,7 +3,7 @@
 #include "../Enums/GUI_COLORS.hpp"
 Horizontal_Menu::Horizontal_Menu()
 {
-	m_enter = false;
+	m_selection_made = false;
 	m_menu_selection = 0;
 
 	m_option_status.set_message_max_length(20);
@@ -36,13 +36,54 @@ void Horizontal_Menu::handle(int input)
 {
 	if (input != -1)
 	{
-		
+		switch (input)
+		{
+			case INPUT_ARROW_KEY_RIGHT:
+				if(m_menu_selection < 2)
+				m_menu_selection++;
+				break;
+
+			case INPUT_ARROW_KEY_LEFT:
+				if (m_menu_selection > 0)
+				m_menu_selection--;
+				break;
+
+			case INPUT_KEY_ENTER:
+				m_selection_made = true;
+				break;
+
+			default:
+				break;
+		}
 	}
 }
 
 void Horizontal_Menu::update()
 {
 	m_test.set_message(m_menu_selection);
+
+	m_option_settings.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_option_statistics.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_option_status.set_message_color(GUI_COLOR_WHITE_BLUE);
+
+	switch (m_menu_selection)
+	{
+		case 0:
+			m_option_status.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 1:
+			m_option_statistics.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 2:
+			m_option_settings.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		default:
+			break;
+	}
+
 }
 
 void Horizontal_Menu::render()
@@ -53,4 +94,14 @@ void Horizontal_Menu::render()
 
 
 	m_test.render();
+}
+
+bool Horizontal_Menu::get_selection_made()
+{
+	return m_selection_made;
+}
+
+int Horizontal_Menu::get_menu_index()
+{
+	return m_menu_selection;
 }

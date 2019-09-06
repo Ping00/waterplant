@@ -1,6 +1,9 @@
 #include "GUI_Overview.hpp"
 #include <iostream>
 #include "../Enums/GUI_COLORS.hpp"
+#include "GUI_Status.hpp"
+#include "GUI_Statistics.hpp"
+#include "GUI_Settings.hpp"
 GUI_Overview::GUI_Overview()
 {
 	//std::cout << "Constructor called for GUI_Overview :> (" << this << ")" << std::endl;
@@ -29,13 +32,38 @@ void GUI_Overview::handle(int input)
 	if (input != -1)
 	{
 		m_horizontal_menu.handle(input);
-		m_test.set_message(input);
 	}
 }
 
 void GUI_Overview::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
 {
+	//Populate with data from Controller
+
+
+	//Update menu based on input settings
 	m_horizontal_menu.update();
+	if (m_horizontal_menu.get_selection_made())
+	{
+		int transfer = m_horizontal_menu.get_menu_index();
+		switch (transfer)
+		{
+			case 0:
+				m_test.set_message("To Status");
+				//Send user to
+				break;
+
+			case 1:
+				m_test.set_message("To Statistics");
+				break;
+
+			case 2:
+				m_test.set_message("To Settings");
+				break;
+
+			default:
+				break;
+		}
+	}
 }
 
 void GUI_Overview::render()
