@@ -1,6 +1,7 @@
 #include "GUI_Overview.hpp"
 #include <iostream>
 #include "../Enums/GUI_COLORS.hpp"
+#include "../Enums/INPUT_KEYS.hpp"
 #include "GUI_Status.hpp"
 #include "GUI_Statistics.hpp"
 #include "GUI_Settings.hpp"
@@ -32,6 +33,7 @@ void GUI_Overview::handle(int input)
 	if (input != -1)
 	{
 		m_horizontal_menu.handle(input);
+		m_test.set_message(input);
 	}
 }
 
@@ -48,16 +50,16 @@ void GUI_Overview::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
 		switch (transfer)
 		{
 			case 0:
-				m_test.set_message("To Status");
+				//m_test.set_message("To Status");
 				//Send user to
 				break;
 
 			case 1:
-				m_test.set_message("To Statistics");
+				//m_test.set_message("To Statistics");
 				break;
 
 			case 2:
-				m_test.set_message("To Settings");
+				//m_test.set_message("To Settings");
 				break;
 
 			default:
