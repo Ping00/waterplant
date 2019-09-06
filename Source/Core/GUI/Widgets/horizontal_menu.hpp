@@ -11,6 +11,10 @@ class Horizontal_Menu
 
 		int m_menu_selection;
 
+		bool m_enter;
+
+		Display_Component test;
+
 	public:
 		Horizontal_Menu();
 		~Horizontal_Menu();

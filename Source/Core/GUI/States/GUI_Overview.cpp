@@ -28,6 +28,7 @@ void GUI_Overview::handle(int input)
 {
 	if (input != -1)
 	{
+		m_horizontal_menu.handle(input);
 		m_test.set_message(input);
 	}
 }
