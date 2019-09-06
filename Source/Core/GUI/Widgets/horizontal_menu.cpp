@@ -22,26 +22,27 @@ Horizontal_Menu::Horizontal_Menu()
 	m_option_settings.set_position(48, 1);
 	m_option_settings.set_message_color(GUI_COLOR_WHITE_BLUE);
 
-	test.set_message_max_length(100);
-	test.set_position(7, 7);
-	test.set_message("!");
-
-
+	m_test.set_message_max_length(100);
+	m_test.set_position(5, 12);
+	m_test.set_message("ABC");
 }
 
 Horizontal_Menu::~Horizontal_Menu()
 {
-
+	
 }
 
 void Horizontal_Menu::handle(int input)
 {
-
+	if (input != -1)
+	{
+		
+	}
 }
 
 void Horizontal_Menu::update()
 {
-
+	m_test.set_message(m_menu_selection);
 }
 
 void Horizontal_Menu::render()
@@ -49,5 +50,7 @@ void Horizontal_Menu::render()
 	m_option_status.render();
 	m_option_statistics.render();
 	m_option_settings.render();
-	test.render();
+
+
+	m_test.render();
 }

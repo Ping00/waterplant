@@ -35,7 +35,7 @@ void GUI_Overview::handle(int input)
 
 void GUI_Overview::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
 {
-
+	m_horizontal_menu.update();
 }
 
 void GUI_Overview::render()

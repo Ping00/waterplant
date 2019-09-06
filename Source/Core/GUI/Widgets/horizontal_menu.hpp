@@ -13,7 +13,7 @@ class Horizontal_Menu
 
 		bool m_enter;
 
-		Display_Component test;
+		Display_Component m_test;
 
 	public:
 		Horizontal_Menu();
