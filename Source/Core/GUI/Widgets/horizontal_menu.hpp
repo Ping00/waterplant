@@ -22,5 +22,6 @@ class Horizontal_Menu
 		void render();
 
 		int get_menu_index();
+		void set_highlight(int option);
 };
 #endif // !__HORIZONTAL_MENU_HPP__

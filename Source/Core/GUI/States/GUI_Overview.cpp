@@ -5,6 +5,7 @@
 #include "GUI_Status.hpp"
 #include "GUI_Statistics.hpp"
 #include "GUI_Settings.hpp"
+#include "curses.h"
 GUI_Overview::GUI_Overview()
 {
 	m_selected_option = false;
@@ -44,7 +45,7 @@ void GUI_Overview::handle(int input)
 	}
 }
 
-void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
+void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu)
 {
 	//Populate with data from Controller
 
@@ -58,15 +59,18 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
 		{
 			case 0:
 				//m_test.set_message("To Status");
-				stack = std::make_unique<GUI_Status>();
+				clear();
+				menu = std::make_unique<GUI_Status>();
 				break;
 
 			case 1:
 				//m_test.set_message("To Statistics");
+				menu = std::make_unique<GUI_Statistics>();
 				break;
 
 			case 2:
 				//m_test.set_message("To Settings");
+				menu = std::make_unique<GUI_Settings>();
 				break;
 
 			default:

@@ -95,3 +95,8 @@ int Horizontal_Menu::get_menu_index()
 {
 	return m_menu_selection;
 }
+
+void Horizontal_Menu::set_highlight(int option)
+{
+	m_menu_selection = option;
+}
