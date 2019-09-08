@@ -38,12 +38,12 @@ void GUI_Startup::handle(int input)
 
 }
 
-void GUI_Startup::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
+void GUI_Startup::update(std::unique_ptr<GUI_BASE>& stack)
 {
 	if (m_timer.check_time())
 	{
 		clear();
-		stack.push(std::make_unique<GUI_Overview>());
+		stack = std::make_unique<GUI_Overview>();
 	}
 }
 

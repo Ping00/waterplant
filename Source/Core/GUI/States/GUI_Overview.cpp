@@ -37,7 +37,7 @@ void GUI_Overview::handle(int input)
 	}
 }
 
-void GUI_Overview::update(std::stack<std::unique_ptr<GUI_BASE>>& stack)
+void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
 {
 	//Populate with data from Controller
 

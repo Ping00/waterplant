@@ -15,7 +15,7 @@ class GUI_Overview : public GUI_BASE
 		~GUI_Overview();
 
 		void handle(int input);
-		void update(std::stack<std::unique_ptr<GUI_BASE>>& stack);
+		void update(std::unique_ptr<GUI_BASE>& stack);
 		void render();
 };
 #endif // !__GUI_OVERVIEW_HPP__

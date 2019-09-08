@@ -8,7 +8,7 @@ class GUI_Settings : public GUI_BASE
 		~GUI_Settings();
 
 		void handle(int input);
-		void update(std::stack<std::unique_ptr<GUI_BASE>>& stack);
+		void update(std::unique_ptr<GUI_BASE>& stack);
 		void render();
 };
 #endif // !__GUI_SETTINGS_HPP__

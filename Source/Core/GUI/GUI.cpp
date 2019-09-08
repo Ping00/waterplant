@@ -40,8 +40,8 @@ bool GUI::init()
 	init_colors();
 
 	//Create our view
-	m_gui.push(std::make_unique<GUI_Startup>());
-	if (m_gui.top() == nullptr) return false;
+	m_gui = std::make_unique<GUI_Startup>();
+	if (m_gui == nullptr) return false;
 
 
 	m_initialized = true;
@@ -50,22 +50,22 @@ bool GUI::init()
 
 void GUI::handle()
 {
-	if (m_gui.top() != nullptr)
+	if (m_gui != nullptr)
 		m_input = getch();
-		m_gui.top().get()->handle(m_input);
+		m_gui.get()->handle(m_input);
 }
 
 void GUI::update()
 {
-	if (m_gui.top() != nullptr)
-		m_gui.top().get()->update(m_gui);
+	if (m_gui != nullptr)
+		m_gui.get()->update(m_gui);
 
 }
 
 void GUI::render()
 {
-	if (m_gui.top() != nullptr)
-		m_gui.top().get()->render();
+	if (m_gui != nullptr)
+		m_gui.get()->render();
 
 	refresh();
 }
