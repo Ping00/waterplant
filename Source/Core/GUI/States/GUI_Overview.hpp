@@ -20,5 +20,6 @@ class GUI_Overview : public GUI_BASE
 		void update(std::unique_ptr<GUI_BASE>& stack);
 		void render();
 
+		void set_highlight(int pos);
 };
 #endif // !__GUI_OVERVIEW_HPP__

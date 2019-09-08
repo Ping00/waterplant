@@ -86,3 +86,8 @@ void GUI_Overview::render()
 	m_current_menu_title.render();
 	m_test.render();
 }
+
+void GUI_Overview::set_highlight(int pos)
+{
+	m_horizontal_menu.set_highlight(pos);
+}

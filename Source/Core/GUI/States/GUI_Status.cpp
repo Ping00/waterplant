@@ -42,7 +42,9 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu)
 	if (m_return)
 	{
 		clear();
-		menu = std::make_unique<GUI_Overview>();
+		std::unique_ptr<GUI_Overview> x = std::make_unique<GUI_Overview>();
+		x.get()->set_highlight(0);
+		menu = std::move(x);
 	}
 }
 
