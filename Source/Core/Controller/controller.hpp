@@ -30,6 +30,7 @@ class Controller
 		//Initialize the controller and system threads
 		bool init();
 
+		//Activate t
 		void run();
 		void check();
 
