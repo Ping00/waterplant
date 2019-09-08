@@ -48,6 +48,7 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
 		{
 			case 0:
 				//m_test.set_message("To Status");
+				stack = std::make_unique<GUI_Status>();
 				break;
 
 			case 1:

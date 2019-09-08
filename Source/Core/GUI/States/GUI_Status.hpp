@@ -3,6 +3,9 @@
 #include "GUI_BASE.hpp"
 class GUI_Status : public GUI_BASE
 {
+	private:
+		Display_Component	m_current_menu_title;
+
 	public:
 		GUI_Status();
 		~GUI_Status();
