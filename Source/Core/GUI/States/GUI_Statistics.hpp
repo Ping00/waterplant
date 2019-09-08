@@ -9,9 +9,17 @@ class GUI_Statistics : public GUI_BASE
 		Horizontal_Menu		m_horizontal_menu;
 		Display_Component	m_splitting_line;
 
-		//---------------
 
 		bool				m_return;
+		//---------------
+
+		//Total Waterings
+
+		Display_Component	m_time_since_last_watering_text;
+		Display_Component	m_time_since_last_watering_data;
+
+		Display_Component	m_total_waterings_text;
+		Display_Component	m_total_waterings_data;
 
 	public:
 		GUI_Statistics();

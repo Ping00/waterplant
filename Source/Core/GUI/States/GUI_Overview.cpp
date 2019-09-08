@@ -58,18 +58,17 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu)
 		switch (transfer)
 		{
 			case 0:
-				//m_test.set_message("To Status");
 				clear();
 				menu = std::make_unique<GUI_Status>();
 				break;
 
 			case 1:
-				//m_test.set_message("To Statistics");
+				clear();
 				menu = std::make_unique<GUI_Statistics>();
 				break;
 
 			case 2:
-				//m_test.set_message("To Settings");
+				clear();
 				menu = std::make_unique<GUI_Settings>();
 				break;
 

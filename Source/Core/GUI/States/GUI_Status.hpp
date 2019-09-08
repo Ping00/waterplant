@@ -18,8 +18,11 @@ class GUI_Status : public GUI_BASE
 		Display_Component	m_valve_status_text;
 		Display_Component	m_valve_status_data;
 
-		Display_Component	m_time_since_last_watering_text;
-		Display_Component	m_time_since_last_watering_data;
+		Display_Component	m_controller_status_text;
+		Display_Component	m_controller_status_data;
+
+		Display_Component	m_sensor_text;
+		Display_Component	m_sensor_data;
 
 	public:
 		GUI_Status();

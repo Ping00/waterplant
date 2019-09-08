@@ -20,6 +20,8 @@ GUI_Startup::GUI_Startup()
 	m_build.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_build.set_position(2, 2);
 
+
+
 	m_titlecard.set_position(32, 10);
 	m_titlecard.set_color(GUI_COLOR_WHITE_BLUE);
 	m_titlecard.load_graphic("titlecard.graphic");
@@ -38,12 +40,12 @@ void GUI_Startup::handle(int input)
 
 }
 
-void GUI_Startup::update(std::unique_ptr<GUI_BASE>& stack)
+void GUI_Startup::update(std::unique_ptr<GUI_BASE>& menu)
 {
 	if (m_timer.check_time())
 	{
 		clear();
-		stack = std::make_unique<GUI_Overview>();
+		menu = std::make_unique<GUI_Overview>();
 	}
 }
 
