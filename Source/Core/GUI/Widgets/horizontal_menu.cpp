@@ -3,7 +3,6 @@
 #include "../Enums/GUI_COLORS.hpp"
 Horizontal_Menu::Horizontal_Menu()
 {
-	m_selection_made = false;
 	m_menu_selection = 0;
 
 	m_option_status.set_message_max_length(20);
@@ -48,10 +47,6 @@ void Horizontal_Menu::handle(int input)
 				m_menu_selection--;
 				break;
 
-			case INPUT_KEY_ENTER:
-				m_selection_made = true;
-				break;
-
 			default:
 				break;
 		}
@@ -94,11 +89,6 @@ void Horizontal_Menu::render()
 
 
 	m_test.render();
-}
-
-bool Horizontal_Menu::get_selection_made()
-{
-	return m_selection_made;
 }
 
 int Horizontal_Menu::get_menu_index()

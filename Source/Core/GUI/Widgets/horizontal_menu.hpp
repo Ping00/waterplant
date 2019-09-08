@@ -11,8 +11,6 @@ class Horizontal_Menu
 
 		int m_menu_selection;
 
-		bool m_selection_made;
-
 		Display_Component m_test;
 
 	public:
@@ -23,7 +21,6 @@ class Horizontal_Menu
 		void update();
 		void render();
 
-		bool get_selection_made();
 		int get_menu_index();
 };
 #endif // !__HORIZONTAL_MENU_HPP__

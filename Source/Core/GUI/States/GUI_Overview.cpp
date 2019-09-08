@@ -7,6 +7,8 @@
 #include "GUI_Settings.hpp"
 GUI_Overview::GUI_Overview()
 {
+	m_selected_option = false;
+
 	//std::cout << "Constructor called for GUI_Overview :> (" << this << ")" << std::endl;
 	m_test.set_message_max_length(100);
 	m_test.set_position(1, 20);
@@ -32,6 +34,14 @@ void GUI_Overview::handle(int input)
 {
 	m_horizontal_menu.handle(input);
 	m_test.set_message(input);
+	if (input == INPUT_KEY_ENTER)
+	{
+		m_selected_option = true;
+	}
+	else
+	{
+		m_selected_option = false;
+	}
 }
 
 void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
@@ -41,7 +51,7 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
 
 	//Update menu based on input settings
 	m_horizontal_menu.update();
-	if (m_horizontal_menu.get_selection_made())
+	if (m_selected_option)
 	{
 		int transfer = m_horizontal_menu.get_menu_index();
 		switch (transfer)

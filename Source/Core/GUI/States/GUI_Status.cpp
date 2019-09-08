@@ -3,7 +3,7 @@
 GUI_Status::GUI_Status()
 {
 	m_current_menu_title.set_message_max_length(20);
-	m_current_menu_title.set_message("SETTINGS");
+	m_current_menu_title.set_message("STATUS");
 	m_current_menu_title.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_current_menu_title.set_position(4, 5);
 }

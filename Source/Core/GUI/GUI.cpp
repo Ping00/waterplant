@@ -51,6 +51,7 @@ bool GUI::init()
 void GUI::handle()
 {
 	if (m_gui != nullptr)
+		//Nullify all current input
 		m_input = getch();
 		if(m_input != ERR)
 		m_gui.get()->handle(m_input);

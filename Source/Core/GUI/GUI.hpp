@@ -5,12 +5,13 @@
 class GUI
 {
 	private:
+		void init_colors();
+
 		bool						m_initialized;
 		std::unique_ptr<GUI_BASE>	m_gui;
+		
 		int							m_input;
-
-
-		void init_colors();
+		bool						m_enter;
 
 	public:
 		GUI();
