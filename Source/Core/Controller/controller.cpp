@@ -4,6 +4,7 @@ Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
 	m_initialized = false;
+
 	//Default tickrate (TODO, load from .settings file)
 	m_tickrate = 100;
 }
@@ -11,7 +12,8 @@ Controller::Controller()
 Controller::~Controller()
 {
 	//Join the threads if the system properly started on shutdown
-	if (m_initialized) 	m_thread.join();
+	if (m_initialized) 	
+		m_thread.join();
 }
 
 bool Controller::init()
@@ -21,6 +23,7 @@ bool Controller::init()
 
 	//Start the thread to run valve control loop
 	m_thread = std::thread(&Controller::run, this);
+
 	m_initialized = true;
 	return m_initialized;
 }
