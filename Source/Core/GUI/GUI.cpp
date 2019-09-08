@@ -52,6 +52,7 @@ void GUI::handle()
 {
 	if (m_gui != nullptr)
 		m_input = getch();
+		if(m_input != ERR)
 		m_gui.get()->handle(m_input);
 }
 

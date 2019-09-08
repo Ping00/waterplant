@@ -30,11 +30,8 @@ GUI_Overview::~GUI_Overview()
 
 void GUI_Overview::handle(int input)
 {
-	if (input != -1)
-	{
-		m_horizontal_menu.handle(input);
-		m_test.set_message(input);
-	}
+	m_horizontal_menu.handle(input);
+	m_test.set_message(input);
 }
 
 void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
@@ -51,7 +48,6 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& stack)
 		{
 			case 0:
 				//m_test.set_message("To Status");
-				//Send user to
 				break;
 
 			case 1:
