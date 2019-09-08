@@ -1,7 +1,12 @@
 #include "GUI_Status.hpp"
 #include "../Enums/GUI_COLORS.hpp"
+#include "../Enums/INPUT_KEYS.hpp"
+#include "GUI_Overview.hpp"
+#include "curses.h"
 GUI_Status::GUI_Status()
 {
+	m_return = false;
+
 	m_current_menu_title.set_message_max_length(20);
 	m_current_menu_title.set_message("STATUS");
 	m_current_menu_title.set_message_color(GUI_COLOR_WHITE_BLUE);
@@ -21,12 +26,24 @@ GUI_Status::~GUI_Status()
 
 void GUI_Status::handle(int input)
 {
-
+	if (input == INPUT_KEY_RETURN)
+	{
+		m_return = true;
+	}
+	else
+	{
+		m_return = false;
+	}
 }
 
-void GUI_Status::update(std::unique_ptr<GUI_BASE>& stack)
+void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu)
 {
 	m_horizontal_menu.update();
+	if (m_return)
+	{
+		clear();
+		menu = std::make_unique<GUI_Overview>();
+	}
 }
 
 void GUI_Status::render()

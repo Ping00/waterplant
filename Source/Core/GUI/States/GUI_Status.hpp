@@ -9,6 +9,18 @@ class GUI_Status : public GUI_BASE
 		Horizontal_Menu		m_horizontal_menu;
 		Display_Component	m_splitting_line;
 
+		bool				m_return;
+		///----
+
+		Display_Component	m_runtime_text;
+		Display_Component	m_runtime_data;
+
+		Display_Component	m_valve_status_text;
+		Display_Component	m_valve_status_data;
+
+		Display_Component	m_time_since_last_watering_text;
+		Display_Component	m_time_since_last_watering_data;
+
 	public:
 		GUI_Status();
 		~GUI_Status();
