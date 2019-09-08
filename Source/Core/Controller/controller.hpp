@@ -6,22 +6,34 @@
 class Controller
 {
 	private:
+		//Has component been properly initialized
 		bool			m_initialized;
-		std::thread		m_thread;
 
+		//Data models which the Controller watches over
+		//Analog to Digital Converter
 		MCP3008			m_mcp3008;
+
+		//Valve controller mechanism
 		Valve			m_valve;
 
+		//The update rate of our controller
 		int				m_tickrate;
+
+		//Custom thread to handle status checking of waterplantation
+		std::thread		m_thread;
 
 
 	public:
 		Controller();
 		~Controller();
 
+		//Initialize the controller and system threads
 		bool init();
 
 		void run();
 		void check();
+
+		int		get_tickrate();
+		void	set_tickrate_milliseconds(int ms);
 };
 #endif // !__CONTROLLER_HPP__
