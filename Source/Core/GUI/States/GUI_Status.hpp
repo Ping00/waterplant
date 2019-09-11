@@ -15,11 +15,11 @@ class GUI_Status : public GUI_BASE
 		Display_Component	m_runtime_text;
 		Display_Component	m_runtime_data;
 
-		Display_Component	m_valve_status_text;
-		Display_Component	m_valve_status_data;
-
 		Display_Component	m_controller_status_text;
 		Display_Component	m_controller_status_data;
+
+		Display_Component	m_valve_status_text;
+		Display_Component	m_valve_status_data;
 
 		Display_Component	m_mcp_status_text;
 		Display_Component	m_mcp_status_data;

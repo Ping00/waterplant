@@ -12,5 +12,6 @@ class Valve
 		~Valve();
 
 		bool init();
+		bool get_initialized();
 };
 #endif // !__VALVE_HPP__

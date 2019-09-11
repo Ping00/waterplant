@@ -60,3 +60,13 @@ void Controller::set_tickrate_milliseconds(int tickrate_ms)
 {
 	m_tickrate = tickrate_ms;
 }
+
+bool Controller::get_controller_initlialized()
+{
+	return m_initialized;
+}
+
+bool Controller::get_valve_initialized()
+{
+	return m_valve.get_initialized();
+}

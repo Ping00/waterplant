@@ -18,6 +18,25 @@ GUI_Status::GUI_Status()
 	m_splitting_line.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_horizontal_menu.set_highlight(0);
+
+	//----
+
+	m_runtime_text.set_message_max_length(24);
+	m_runtime_text.set_position(4, 7);
+	m_runtime_text.set_message("Total Runtime (Session):");
+
+	m_runtime_data.set_message_max_length(24);
+	m_runtime_data.set_position(32, 7);
+	m_runtime_data.set_message("00:00:00");
+
+	m_controller_status_text.set_message_max_length(20);
+	m_controller_status_text.set_position(4, 9);
+	m_controller_status_text.set_message("Controller Status:");
+
+	m_controller_status_data.set_message_max_length(20);
+	m_controller_status_data.set_position(32, 9);
+	m_controller_status_data.set_message("[ ??? ]");
+
 }
 
 GUI_Status::~GUI_Status()
@@ -46,6 +65,12 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 		x.get()->set_highlight(0);
 		menu = std::move(x);
 	}
+
+	//Update text statuses
+	if (controller.get_controller_initlialized())
+	{
+
+	}
 }
 
 void GUI_Status::render()
@@ -53,4 +78,10 @@ void GUI_Status::render()
 	m_current_menu_title.render();
 	m_splitting_line.render();
 	m_horizontal_menu.render();
+
+	m_runtime_text.render();
+	m_runtime_data.render();
+
+	m_controller_status_text.render();
+	m_controller_status_data.render();
 }

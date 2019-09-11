@@ -36,5 +36,9 @@ class Controller
 
 		int		get_tickrate();
 		void	set_tickrate_milliseconds(int ms);
+
+		//----
+		bool	get_controller_initlialized();
+		bool	get_valve_initialized();
 };
 #endif // !__CONTROLLER_HPP__
