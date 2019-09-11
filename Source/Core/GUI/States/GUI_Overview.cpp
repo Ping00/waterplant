@@ -7,11 +7,7 @@
 #include "GUI_Settings.hpp"
 #include "curses.h"
 
-#include <chrono>
-#include <ctime>
-#include <sstream>
-#include <iomanip>
-#include <codecvt>
+#include "../../../Utilities/utilities.hpp"
 
 GUI_Overview::GUI_Overview()
 {
@@ -62,6 +58,8 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu)
 	//Populate with data from Controller
 
 	//Update clock
+	
+	/*
 	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 	std::time_t now_c = std::chrono::system_clock::to_time_t(now);
 	std::tm newtime;
@@ -70,8 +68,8 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu)
 
 	char buffer[20];
 	strftime(buffer, sizeof(buffer), "%H:%M:%S", &newtime);
-
-	m_current_time.set_message(buffer);
+	*/
+	m_current_time.set_message(Utilities::get_current_time());
 
 	//Update menu based on input settings
 	m_horizontal_menu.update();
