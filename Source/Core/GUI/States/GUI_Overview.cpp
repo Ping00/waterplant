@@ -6,6 +6,13 @@
 #include "GUI_Statistics.hpp"
 #include "GUI_Settings.hpp"
 #include "curses.h"
+
+#include <chrono>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
+#include <codecvt>
+
 GUI_Overview::GUI_Overview()
 {
 	m_selected_option = false;
@@ -26,7 +33,7 @@ GUI_Overview::GUI_Overview()
 
 	m_current_time.set_message_max_length(30);
 	m_current_time.set_message_color(GUI_COLOR_WHITE_BLUE);
-	m_current_time.set_message("12:02:54");
+	m_current_time.set_message("00:00:00");
 	m_current_time.set_position(4, 7);
 
 }
@@ -54,6 +61,17 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu)
 {
 	//Populate with data from Controller
 
+	//Update clock
+	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+	std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+	std::tm newtime;
+
+	localtime_s(&newtime, &now_c);
+
+	char buffer[20];
+	strftime(buffer, sizeof(buffer), "%H:%M:%S", &newtime);
+
+	m_current_time.set_message(buffer);
 
 	//Update menu based on input settings
 	m_horizontal_menu.update();
