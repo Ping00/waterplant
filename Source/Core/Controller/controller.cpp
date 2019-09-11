@@ -70,3 +70,8 @@ bool Controller::get_valve_initialized()
 {
 	return m_valve.get_initialized();
 }
+
+std::chrono::high_resolution_clock::time_point Controller::get_system_start()
+{
+	return m_start;
+}

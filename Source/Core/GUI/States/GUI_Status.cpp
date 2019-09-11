@@ -57,6 +57,16 @@ void GUI_Status::handle(int input)
 
 void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
+	//Update text statuses
+	if (controller.get_controller_initlialized())
+	{
+		m_controller_status_data.set_message("[ OK ]");
+	}
+	else
+	{
+		m_controller_status_data.set_message("[ ERROR ]");
+	}
+
 	m_horizontal_menu.update();
 	if (m_return)
 	{
@@ -64,12 +74,6 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 		std::unique_ptr<GUI_Overview> x = std::make_unique<GUI_Overview>();
 		x.get()->set_highlight(0);
 		menu = std::move(x);
-	}
-
-	//Update text statuses
-	if (controller.get_controller_initlialized())
-	{
-
 	}
 }
 

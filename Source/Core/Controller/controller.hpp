@@ -9,6 +9,9 @@ class Controller
 		//Has component been properly initialized
 		bool			m_initialized;
 
+		//Controller startup time
+		std::chrono::high_resolution_clock::time_point m_start;
+
 		//Data models which the Controller watches over
 		//Analog to Digital Converter
 		MCP3008			m_mcp3008;
@@ -40,5 +43,7 @@ class Controller
 		//----
 		bool	get_controller_initlialized();
 		bool	get_valve_initialized();
+
+		std::chrono::high_resolution_clock::time_point get_system_start();
 };
 #endif // !__CONTROLLER_HPP__
