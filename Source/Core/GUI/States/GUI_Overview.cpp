@@ -24,6 +24,11 @@ GUI_Overview::GUI_Overview()
 	m_current_menu_title.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_current_menu_title.set_position(4, 5);
 
+	m_current_time.set_message_max_length(30);
+	m_current_time.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_current_time.set_message("12:02:54");
+	m_current_time.set_position(4, 7);
+
 }
 
 GUI_Overview::~GUI_Overview()
@@ -84,6 +89,7 @@ void GUI_Overview::render()
 	m_splitting_line.render();
 	m_current_menu_title.render();
 	m_test.render();
+	m_current_time.render();
 }
 
 void GUI_Overview::set_highlight(int pos)

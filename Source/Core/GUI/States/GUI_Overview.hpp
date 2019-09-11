@@ -10,6 +10,8 @@ class GUI_Overview : public GUI_BASE
 		Display_Component	m_current_menu_title;
 		Horizontal_Menu		m_horizontal_menu;
 
+		Display_Component	m_current_time;
+
 		bool				m_selected_option;
 
 	public:
