@@ -3,6 +3,7 @@
 #include "../Enums/INPUT_KEYS.hpp"
 #include "GUI_Overview.hpp"
 #include "curses.h"
+#include "../../../Utilities/utilities.hpp"
 GUI_Status::GUI_Status()
 {
 	m_return = false;
@@ -37,6 +38,14 @@ GUI_Status::GUI_Status()
 	m_controller_status_data.set_position(32, 9);
 	m_controller_status_data.set_message("[ ??? ]");
 
+	m_valve_status_text.set_message_max_length(20);
+	m_valve_status_text.set_position(4, 11);
+	m_valve_status_text.set_message("Valve Status:");
+
+	m_valve_status_data.set_message_max_length(20);
+	m_valve_status_data.set_position(32, 11);
+	m_valve_status_data.set_message("[ ??? ]");
+
 }
 
 GUI_Status::~GUI_Status()
@@ -58,6 +67,10 @@ void GUI_Status::handle(int input)
 void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	//Update text statuses
+
+	m_runtime_data.set_message(Utilities::get_time_difference(controller.get_system_start()));
+
+
 	if (controller.get_controller_initlialized())
 	{
 		m_controller_status_data.set_message("[ OK ]");
@@ -65,6 +78,15 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 	else
 	{
 		m_controller_status_data.set_message("[ ERROR ]");
+	}
+
+	if (controller.get_valve_initialized())
+	{
+		m_valve_status_data.set_message("[ OK ]");
+	}
+	else
+	{
+		m_valve_status_data.set_message("[ ERROR ]");
 	}
 
 	m_horizontal_menu.update();
@@ -88,4 +110,7 @@ void GUI_Status::render()
 
 	m_controller_status_text.render();
 	m_controller_status_data.render();
+
+	m_valve_status_text.render();
+	m_valve_status_data.render();
 }

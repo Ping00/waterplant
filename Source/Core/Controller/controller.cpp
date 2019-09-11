@@ -1,5 +1,6 @@
 #include "controller.hpp"
 #include <iostream>
+#include <chrono>
 Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
@@ -18,8 +19,12 @@ Controller::~Controller()
 
 bool Controller::init()
 {
+	//Get timestamp of initialization
+	m_start = std::chrono::high_resolution_clock::now();
+
 	//Initialize the Analog Digital Converter (MCP3008)
 	m_mcp3008.init(0, 1000000);
+	m_valve.init();
 
 	//Start the thread to run valve control loop
 	m_thread = std::thread(&Controller::run, this);

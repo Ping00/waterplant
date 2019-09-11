@@ -9,6 +9,8 @@ class GUI_Settings : public GUI_BASE
 		Horizontal_Menu		m_horizontal_menu;
 		Display_Component	m_splitting_line;
 
+
+		//Inputs
 		bool				m_return;
 
 	public:
