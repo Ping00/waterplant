@@ -88,7 +88,7 @@ void Horizontal_Menu::render()
 	m_option_settings.render();
 
 
-	m_test.render();
+	//m_test.render();
 }
 
 int Horizontal_Menu::get_menu_index()

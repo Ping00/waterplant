@@ -46,6 +46,14 @@ GUI_Status::GUI_Status()
 	m_valve_status_data.set_position(32, 11);
 	m_valve_status_data.set_message("[ ??? ]");
 
+	m_mcp_status_text.set_message_max_length(20);
+	m_mcp_status_text.set_position(4, 13);
+	m_mcp_status_text.set_message("MCP3008 Status:");
+
+	m_mcp_status_data.set_message_max_length(20);
+	m_mcp_status_data.set_position(32, 13);
+	m_mcp_status_data.set_message("[ ??? ]");
+
 }
 
 GUI_Status::~GUI_Status()
@@ -113,4 +121,7 @@ void GUI_Status::render()
 
 	m_valve_status_text.render();
 	m_valve_status_data.render();
+
+	m_mcp_status_text.render();
+	m_mcp_status_data.render();
 }

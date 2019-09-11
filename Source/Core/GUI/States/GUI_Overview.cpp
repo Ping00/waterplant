@@ -93,7 +93,6 @@ void GUI_Overview::render()
 	m_horizontal_menu.render();
 	m_splitting_line.render();
 	m_current_menu_title.render();
-	m_test.render();
 	m_current_time.render();
 }
 
