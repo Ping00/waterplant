@@ -16,17 +16,17 @@ class TMP36
 
 		double					m_data;
 
-		double format	(double data);
-		double poll_sensor();
+		double					format		(double data);
+		double					poll_sensor	();
 
 	public:
 		TMP36();
 		~TMP36();
 
-		bool init				(int channel);
-		void run				();
-		void write				(double data);
-		double read				();
+		bool	init			(int channel);
+		void	run				();
+		void	write			(double data);
+		double	read			();
 
 };
 #endif // !__TMP36_HPP__

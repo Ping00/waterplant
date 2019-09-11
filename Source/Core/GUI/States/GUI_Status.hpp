@@ -21,8 +21,17 @@ class GUI_Status : public GUI_BASE
 		Display_Component	m_controller_status_text;
 		Display_Component	m_controller_status_data;
 
-		Display_Component	m_sensor_text;
-		Display_Component	m_sensor_data;
+		Display_Component	m_mcp_status_text;
+		Display_Component	m_mcp_status_data;
+
+		Display_Component	m_active_mcp_devices_text;
+		Display_Component	m_active_mcp_devices_data;
+
+		Display_Component	m_sensor_temperature_text;
+		Display_Component	m_sensor_temperature_data;
+
+		Display_Component	m_sensor_moisture_text;
+		Display_Component	m_sensor_moisture_data;
 
 	public:
 		GUI_Status();

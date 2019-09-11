@@ -12,11 +12,14 @@ class MCP3008
 		int					m_spi_channel;
 		int					m_clock_speed_hz;
 
+		int					m_connected_devices;
+
 		bool				m_spi_active[8];
 		//SENSOR			m_sensors[8];
 
 		TMP36				m_tmp36;
 		SMSM				m_smsm;
+
 	
 
 	public:
@@ -27,7 +30,7 @@ class MCP3008
 
 		double get_data(int channel);
 		
-		//void add_sensor(int channel);
+		//bool add_sensor(int channel, SENSOR sensor);
 		//void remove_sensor(int channel);
 };
 #endif // !__MCP3008_HPP__
