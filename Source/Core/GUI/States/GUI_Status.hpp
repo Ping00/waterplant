@@ -30,15 +30,15 @@ class GUI_Status : public GUI_BASE
 		Display_Component	m_sensor_temperature_text;
 		Display_Component	m_sensor_temperature_data;
 
-		Display_Component	m_sensor_moisture_text;
-		Display_Component	m_sensor_moisture_data;
+		Display_Component	m_sensor_moisture_level_text;
+		Display_Component	m_sensor_moisture_level_data;
 
 	public:
 		GUI_Status();
 		~GUI_Status();
 
 		void handle(int input);
-		void update(std::unique_ptr<GUI_BASE>& stack);
+		void update(std::unique_ptr<GUI_BASE>& stack, Controller& controller);
 		void render();
 };
 #endif // !__GUI_STATUS_HPP__

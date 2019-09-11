@@ -36,7 +36,7 @@ void GUI_Status::handle(int input)
 	}
 }
 
-void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu)
+void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	m_horizontal_menu.update();
 	if (m_return)

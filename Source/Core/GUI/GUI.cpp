@@ -57,10 +57,10 @@ void GUI::handle()
 		m_gui.get()->handle(m_input);
 }
 
-void GUI::update()
+void GUI::update(Controller& controller)
 {
 	if (m_gui != nullptr)
-		m_gui.get()->update(m_gui);
+		m_gui.get()->update(m_gui, controller);
 
 }
 

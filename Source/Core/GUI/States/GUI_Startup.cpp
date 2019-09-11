@@ -40,7 +40,7 @@ void GUI_Startup::handle(int input)
 
 }
 
-void GUI_Startup::update(std::unique_ptr<GUI_BASE>& menu)
+void GUI_Startup::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	if (m_timer.check_time())
 	{

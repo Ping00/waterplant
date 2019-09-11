@@ -53,22 +53,11 @@ void GUI_Overview::handle(int input)
 	}
 }
 
-void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu)
+void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	//Populate with data from Controller
 
 	//Update clock
-	
-	/*
-	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-	std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-	std::tm newtime;
-
-	localtime_s(&newtime, &now_c);
-
-	char buffer[20];
-	strftime(buffer, sizeof(buffer), "%H:%M:%S", &newtime);
-	*/
 	m_current_time.set_message(Utilities::get_current_time());
 
 	//Update menu based on input settings

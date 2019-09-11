@@ -19,7 +19,7 @@ class GUI_Overview : public GUI_BASE
 		~GUI_Overview();
 
 		void handle(int input);
-		void update(std::unique_ptr<GUI_BASE>& stack);
+		void update(std::unique_ptr<GUI_BASE>& stack, Controller& controller);
 		void render();
 
 		void set_highlight(int pos);

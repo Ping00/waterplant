@@ -35,7 +35,7 @@ void Engine::handle()
 
 void Engine::update()
 {
-	m_gui.update();
+	m_gui.update(m_controller);
 }
 
 void Engine::render()

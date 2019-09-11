@@ -26,7 +26,7 @@ class GUI_Statistics : public GUI_BASE
 		~GUI_Statistics();
 
 		void handle(int input);
-		void update(std::unique_ptr<GUI_BASE>& stack);
+		void update(std::unique_ptr<GUI_BASE>& stack, Controller& controller);
 		void render();
 };
 #endif // !__GUI_STATISTICS_HPP__

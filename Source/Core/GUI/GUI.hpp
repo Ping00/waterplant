@@ -20,7 +20,7 @@ class GUI
 		bool init();
 
 		void handle();
-		void update();
+		void update(Controller& controller);
 		void render();
 };
 #endif // !__GUI_HPP__

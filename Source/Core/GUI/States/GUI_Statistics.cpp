@@ -37,7 +37,7 @@ void GUI_Statistics::handle(int input)
 	}
 }
 
-void GUI_Statistics::update(std::unique_ptr<GUI_BASE>& menu)
+void GUI_Statistics::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	m_horizontal_menu.update();
 	if (m_return)
