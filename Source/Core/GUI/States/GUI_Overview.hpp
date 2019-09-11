@@ -12,6 +12,15 @@ class GUI_Overview : public GUI_BASE
 
 		Display_Component	m_current_time;
 
+		Display_Component	m_current_temperature_text;
+		Display_Component	m_current_temperature_data;
+
+		Display_Component	m_current_smsm_value_text;
+		Display_Component	m_current_smsm_value_data;
+
+		Display_Component	m_valve_open_text;
+		Display_Component	m_valve_open_data;
+
 		bool				m_selected_option;
 
 	public:

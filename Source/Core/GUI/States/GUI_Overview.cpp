@@ -32,6 +32,30 @@ GUI_Overview::GUI_Overview()
 	m_current_time.set_message("00:00:00");
 	m_current_time.set_position(4, 7);
 
+	m_current_temperature_text.set_message_max_length(30);
+	m_current_temperature_text.set_message("Current Temperature: ");
+	m_current_temperature_text.set_position(4, 9);
+
+	m_current_temperature_data.set_message_max_length(10);
+	m_current_temperature_data.set_message("0.0 °C");
+	m_current_temperature_data.set_position(32, 9);
+
+	m_current_smsm_value_text.set_message_max_length(30);
+	m_current_smsm_value_text.set_message("Soil Moisture Level:");
+	m_current_smsm_value_text.set_position(4, 11);
+
+	m_current_smsm_value_data.set_message_max_length(10);
+	m_current_smsm_value_data.set_message("000");
+	m_current_smsm_value_data.set_position(32, 11);
+
+	m_valve_open_text.set_message_max_length(30);
+	m_valve_open_text.set_message("Valve State:");
+	m_valve_open_text.set_position(4, 13);
+
+	m_valve_open_data.set_message_max_length(10);
+	m_valve_open_data.set_message("[ ??? ]");
+	m_valve_open_data.set_position(32, 13);
+
 }
 
 GUI_Overview::~GUI_Overview()
@@ -94,6 +118,15 @@ void GUI_Overview::render()
 	m_splitting_line.render();
 	m_current_menu_title.render();
 	m_current_time.render();
+
+	m_current_temperature_text.render();
+	m_current_temperature_data.render();
+
+	m_current_smsm_value_text.render();
+	m_current_smsm_value_data.render();
+
+	m_valve_open_text.render();
+	m_valve_open_data.render();
 }
 
 void GUI_Overview::set_highlight(int pos)
