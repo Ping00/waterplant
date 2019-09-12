@@ -26,7 +26,7 @@ std::string Utilities::get_time_difference(std::chrono::high_resolution_clock::t
 
 	double elapsed = time_span.count();
 	int hours = (int)elapsed / (60*60);
-	int min = (int)elapsed / 60;
+	int min = ((int)elapsed / 60) % 60;
 	int sec = (int)elapsed % 60;
 
 	std::stringstream ss;
