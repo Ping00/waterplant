@@ -32,5 +32,7 @@ class MCP3008
 		
 		//bool add_sensor(int channel, SENSOR sensor);
 		//void remove_sensor(int channel);
+
+		bool	get_initialized();
 };
 #endif // !__MCP3008_HPP__

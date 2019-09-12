@@ -76,6 +76,11 @@ bool Controller::get_valve_initialized()
 	return m_valve.get_initialized();
 }
 
+bool Controller::get_mcp3008_initialized()
+{
+	return m_mcp3008.get_initialized();
+}
+
 std::chrono::high_resolution_clock::time_point Controller::get_system_start()
 {
 	return m_start;

@@ -5,5 +5,6 @@ class SMSM
 	private:
 
 	public:
+		void init();
 };
 #endif // !__SHM_HPP__

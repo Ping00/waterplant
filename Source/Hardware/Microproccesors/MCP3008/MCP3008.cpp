@@ -17,10 +17,17 @@ bool MCP3008::init(int channel, int clock)
 	//Init all our sensors, give them
 	m_tmp36.init(0);
 	//m_smsm.init(1);
-	return true;
+
+	m_initialized = true;
+	return m_initialized;
 }
 
 double MCP3008::get_data(int channel)
 {
 	return m_tmp36.read();
+}
+
+bool MCP3008::get_initialized()
+{
+	return m_initialized;
 }

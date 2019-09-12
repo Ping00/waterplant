@@ -43,6 +43,7 @@ class Controller
 		//----
 		bool	get_controller_initlialized();
 		bool	get_valve_initialized();
+		bool	get_mcp3008_initialized();
 
 		std::chrono::high_resolution_clock::time_point get_system_start();
 };

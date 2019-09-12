@@ -54,6 +54,30 @@ GUI_Status::GUI_Status()
 	m_mcp_status_data.set_position(32, 13);
 	m_mcp_status_data.set_message("[ ??? ]");
 
+	m_active_mcp_devices_text.set_message_max_length(20);
+	m_active_mcp_devices_text.set_position(4, 15);
+	m_active_mcp_devices_text.set_message("Registered Sensors:");
+
+	m_active_mcp_devices_data.set_message_max_length(20);
+	m_active_mcp_devices_data.set_position(32, 15);
+	m_active_mcp_devices_data.set_message("0");
+
+	m_sensor_temperature_status_text.set_message_max_length(20);
+	m_sensor_temperature_status_text.set_position(4, 17);
+	m_sensor_temperature_status_text.set_message("TMP36 Status:");
+
+	m_sensor_temperature_status_data.set_message_max_length(20);
+	m_sensor_temperature_status_data.set_position(32, 17);
+	m_sensor_temperature_status_data.set_message("[ ??? ]");
+
+	m_sensor_moisture_status_text.set_message_max_length(20);
+	m_sensor_moisture_status_text.set_position(4, 19);
+	m_sensor_moisture_status_text.set_message("SMSMS Status:");
+
+	m_sensor_moisture_status_data.set_message_max_length(20);
+	m_sensor_moisture_status_data.set_position(32, 19);
+	m_sensor_moisture_status_data.set_message("[ ??? ]");
+
 }
 
 GUI_Status::~GUI_Status()
@@ -97,6 +121,16 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 		m_valve_status_data.set_message("[ ERROR ]");
 	}
 
+	if (controller.get_mcp3008_initialized())
+	{
+		m_mcp_status_data.set_message("[ OK ]");
+	}
+	else
+	{
+		m_mcp_status_data.set_message("[ ERROR ]");
+	}
+
+
 	m_horizontal_menu.update();
 	if (m_return)
 	{
@@ -124,4 +158,13 @@ void GUI_Status::render()
 
 	m_mcp_status_text.render();
 	m_mcp_status_data.render();
+
+	m_active_mcp_devices_text.render();
+	m_active_mcp_devices_data.render();
+
+	m_sensor_moisture_status_data.render();
+	m_sensor_moisture_status_text.render();
+
+	m_sensor_temperature_status_data.render();
+	m_sensor_temperature_status_text.render();
 }
