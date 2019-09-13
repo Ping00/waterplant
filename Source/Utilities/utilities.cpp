@@ -46,3 +46,27 @@ std::string Utilities::convert_temp_data_to_string(double temp)
 
 	return ss.str();
 }
+
+std::string Utilities::get_open_closed_state_msg(bool state)
+{
+	if (state)
+	{
+		return "[ OPEN ]";
+	}
+	else
+	{
+		return "[ CLOSED ]";
+	}
+}
+
+std::string Utilities::get_ok_error_state_msg(bool state)
+{
+	if (state)
+	{
+		return "[ OK ]";
+	}
+	else
+	{
+		return "[ ERROR ]";
+	}
+}

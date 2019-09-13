@@ -102,34 +102,9 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 
 	m_runtime_data.set_message(Utilities::get_time_difference(controller.get_system_start()));
 
-
-	if (controller.get_controller_initlialized())
-	{
-		m_controller_status_data.set_message("[ OK ]");
-	}
-	else
-	{
-		m_controller_status_data.set_message("[ ERROR ]");
-	}
-
-	if (controller.get_valve_initialized())
-	{
-		m_valve_status_data.set_message("[ OK ]");
-	}
-	else
-	{
-		m_valve_status_data.set_message("[ ERROR ]");
-	}
-
-	if (controller.get_mcp3008_initialized())
-	{
-		m_mcp_status_data.set_message("[ OK ]");
-	}
-	else
-	{
-		m_mcp_status_data.set_message("[ ERROR ]");
-	}
-
+	m_controller_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_controller_initlialized()));
+	m_valve_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_valve_initialized()));
+	m_mcp_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_mcp3008_initialized()));
 
 	m_horizontal_menu.update();
 	if (m_return)

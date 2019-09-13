@@ -20,3 +20,8 @@ bool Valve::get_initialized()
 {
 	return m_initialized;
 }
+
+bool Valve::get_valve_open_state()
+{
+	return m_valve_open;
+}

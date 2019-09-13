@@ -13,5 +13,6 @@ class Valve
 
 		bool init();
 		bool get_initialized();
+		bool get_valve_open_state();
 };
 #endif // !__VALVE_HPP__

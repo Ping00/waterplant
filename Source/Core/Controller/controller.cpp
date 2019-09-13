@@ -81,6 +81,11 @@ bool Controller::get_mcp3008_initialized()
 	return m_mcp3008.get_initialized();
 }
 
+bool Controller::get_valve_open_state()
+{
+	return m_valve.get_valve_open_state();
+}
+
 double Controller::get_mcp3008_reading(int channel)
 {
 	return m_mcp3008.get_data(channel);

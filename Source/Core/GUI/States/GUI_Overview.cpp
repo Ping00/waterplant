@@ -89,7 +89,7 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu, Controller& controlle
 	m_current_temperature_data.set_message(Utilities::convert_temp_data_to_string(controller.get_mcp3008_reading(0)));
 
 	//Set valve status
-
+	m_valve_open_data.set_message(Utilities::get_open_closed_state_msg(controller.get_valve_open_state()));
 
 	//Update menu based on input settings
 	m_horizontal_menu.update();
