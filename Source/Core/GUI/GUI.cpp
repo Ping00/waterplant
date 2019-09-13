@@ -3,6 +3,7 @@
 #include <iostream>
 #include "curses.h"
 #include "Enums/GUI_COLORS.hpp"
+#include "../Controller/controller.hpp"
 GUI::GUI()
 {
 	std::cout << "Constructor called for GUI :> (" << this << ")" << std::endl;
@@ -26,6 +27,20 @@ bool GUI::init()
 	
 	//make so no characters will be written if we type
 	noecho();
+
+	resize_term(40, 120);
+
+	
+	//Resize terminal
+	//resize_term(2000, 2000);
+
+	//int rows;
+	//int cols;
+
+	//Get current screen dimensions;
+	//getmaxyx(stdscr, rows, cols);
+
+	//resize_term( rows - 1,  cols - 1);
 
 	//Remove cursor (Blinking white part)
 	curs_set(0);
