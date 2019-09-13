@@ -16,7 +16,7 @@ bool MCP3008::init(int channel, int clock)
 {
 	//Init all our sensors, give them
 	m_tmp36.init(0);
-	//m_smsm.init(1);
+	m_smsm.init(1);
 
 	m_initialized = true;
 	return m_initialized;
@@ -24,7 +24,8 @@ bool MCP3008::init(int channel, int clock)
 
 double MCP3008::get_data(int channel)
 {
-	return m_tmp36.read();
+
+	return 1;
 }
 
 bool MCP3008::get_initialized()

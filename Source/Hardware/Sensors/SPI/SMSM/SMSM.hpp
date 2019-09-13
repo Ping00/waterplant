@@ -1,10 +1,13 @@
 #ifndef __SMSM_HPP__
 #define __SMSM_HPP__
-class SMSM
+#include "../SPI_SENSOR/SPI_SENSOR.hpp"
+class SMSM : public SPI_SENSOR
 {
 	private:
+		virtual double format(double data);
 
 	public:
-		void init();
+		SMSM();
+		~SMSM();
 };
 #endif // !__SHM_HPP__

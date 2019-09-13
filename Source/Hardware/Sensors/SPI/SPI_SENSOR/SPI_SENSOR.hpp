@@ -1,23 +1,49 @@
 #ifndef __SPI_SENSOR_HPP__
 #define __SPI_SENSOR_HPP__
 #include <thread>
-#include <memory>
+#include <shared_mutex>
+#include <mutex>
 class SPI_SENSOR
 {
-	private:
-		std::thread						m_thread;
-		bool							m_initialized;
+private:
+	//Is the sensor component activated
+	bool					m_initialized;
 
-		int								m_channel;
-		
-		virtual void convert() = 0;
+	//Our custom thread which polls the sensor
+	std::thread				m_thread;
 
-	public:
-		SPI_SENSOR();
-		virtual ~SPI_SENSOR();
+	//Which channel are we transmitting to in the MCP3008
+	int						m_channel;
 
-		bool init(int channel);
-		void run();
-		void write();
+	//How often we attempt to write new data
+	int						m_tickrate;
+
+	//Mutex for sharing data for other sources so we dont corrupt it
+	std::shared_mutex		m_mutex;
+
+	//Our data reading
+	double					m_data;
+
+	//Convert our millivolt reading into the sensors proper format
+	virtual double	format(double data) = 0;
+
+	//Collect data
+	double	poll_sensor();
+
+	//Start the thread
+	void	run();
+
+	//Write the new value to our sensor
+	void	write(double data);
+
+public:
+	SPI_SENSOR();
+	virtual ~SPI_SENSOR();
+
+	//Start the sensor
+	bool	init(int channel);
+
+	//Read the data we have stored
+	double	read();
 };
 #endif // !__SPI_SENSOR_HPP__

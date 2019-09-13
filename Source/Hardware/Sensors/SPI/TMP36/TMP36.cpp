@@ -1,11 +1,12 @@
 #include "TMP36.hpp"
 #include <iostream>
-#include "../../../Microproccesors/MCP3008/MCP3008.hpp"
 TMP36::TMP36()
 {
 	std::cout << "Constructor called for TMP36 :> (" << this << ")" << std::endl;
 	m_initialized = false;
 	m_tickrate = 100;
+
+	m_data = 0;
 }
 
 TMP36::~TMP36()
@@ -58,7 +59,7 @@ void TMP36::run()
 		//Format it to proper format
 		result = format(result);
 
-		//Write it to our sensor variable
+		//Write it to our sensor data
 		write(result);
 	}
 }
