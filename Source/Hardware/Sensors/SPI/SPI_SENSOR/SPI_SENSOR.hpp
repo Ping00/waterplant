@@ -2,7 +2,6 @@
 #define __SPI_SENSOR_HPP__
 #include <thread>
 #include <memory>
-#include "../../../Microproccesors/MCP3008/MCP3008.hpp"
 class SPI_SENSOR
 {
 	private:

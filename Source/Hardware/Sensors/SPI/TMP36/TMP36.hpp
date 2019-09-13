@@ -30,7 +30,7 @@ class TMP36
 		//Collect data
 		double					poll_sensor	();
 
-		//the thread function
+		//Start the thread
 		void	run();
 
 		//Write the new value to our sensor

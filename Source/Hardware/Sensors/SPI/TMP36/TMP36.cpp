@@ -25,15 +25,24 @@ bool TMP36::init(int channel)
 double TMP36::format(double data)
 {
 	//Converts our ADC results into the proper format to be read (Depending on device)
-	double result = data * 12.2;
-	return result;
+
+	//the current schematic uses a 3.3v pin for the voltage so it needs to be converted from
+	//a range of 0-1023 to 0-3.3v
+	double voltage = data * 3.3;
+	voltage /= 1024;
+
+	//Convert voltage to temperature
+	double temperature = (voltage - 0.5) * 100;
+	return temperature;
 }
 
 double TMP36::poll_sensor()
 {
 	//Get data here
-	double data_result = 123.45;
-	return data_result;
+	/*We would replace this with our Wiringpi implemntation*/
+	double data_poll = 123.45;
+
+	return data_poll;
 }
 
 void TMP36::run()
@@ -42,8 +51,14 @@ void TMP36::run()
 	{
 		//Tickrate determines how often do we try to wake the thread and get data from sensor
 		std::this_thread::sleep_for(std::chrono::milliseconds(m_tickrate));
+
+		//Read the sensor data
 		double result = poll_sensor();
+
+		//Format it to proper format
 		result = format(result);
+
+		//Write it to our sensor variable
 		write(result);
 	}
 }
