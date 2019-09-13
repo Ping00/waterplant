@@ -36,3 +36,13 @@ std::string Utilities::get_time_difference(std::chrono::high_resolution_clock::t
 
 	return std::string(ss.str());
 }
+
+std::string Utilities::convert_temp_data_to_string(double temp)
+{
+
+	//Fix presentation
+	std::stringstream ss;
+	ss << std::fixed << std::setprecision(1) << std::setw(2) << std::setfill('0') << temp << " °C";
+
+	return ss.str();
+}

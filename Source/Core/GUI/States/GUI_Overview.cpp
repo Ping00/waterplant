@@ -8,7 +8,8 @@
 #include "curses.h"
 
 #include "../../../Utilities/utilities.hpp"
-
+#include <iomanip>
+#include <sstream>
 GUI_Overview::GUI_Overview()
 {
 	m_selected_option = false;
@@ -83,6 +84,12 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu, Controller& controlle
 
 	//Update clock
 	m_current_time.set_message(Utilities::get_current_time());
+
+	//Update temperature
+	m_current_temperature_data.set_message(Utilities::convert_temp_data_to_string(controller.get_mcp3008_reading(0)));
+
+	//Set valve status
+
 
 	//Update menu based on input settings
 	m_horizontal_menu.update();

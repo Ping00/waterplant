@@ -24,8 +24,21 @@ bool MCP3008::init(int channel, int clock)
 
 double MCP3008::get_data(int channel)
 {
+	switch (channel)
+	{
+		case 0:
+			return m_tmp36.read();
+			break;
 
-	return 1;
+		case 1:
+			return m_smsm.read();
+			break;
+
+		default:
+			return 0;
+			break;
+	}
+	return 0;
 }
 
 bool MCP3008::get_initialized()

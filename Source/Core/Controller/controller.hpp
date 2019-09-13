@@ -45,6 +45,8 @@ class Controller
 		bool	get_valve_initialized();
 		bool	get_mcp3008_initialized();
 
+		double	get_mcp3008_reading(int channel);
+
 		std::chrono::high_resolution_clock::time_point get_system_start();
 };
 #endif // !__CONTROLLER_HPP__
