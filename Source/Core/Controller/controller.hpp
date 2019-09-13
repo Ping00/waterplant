@@ -25,6 +25,8 @@ class Controller
 		//Custom thread to handle status checking of waterplantation
 		std::thread		m_thread;
 
+		int			m_test;
+
 
 	public:
 		Controller();

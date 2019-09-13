@@ -8,6 +8,8 @@ Controller::Controller()
 
 	//Default tickrate (TODO, load from .settings file)
 	m_tickrate = 100;
+
+	m_test = 0;
 }
 
 Controller::~Controller()
@@ -54,6 +56,12 @@ void Controller::check()
 	//Examine if data allows for valve to be opened/closed
 	//Open or Close valve
 	//Turn of LED
+
+	m_test++;
+	if (m_test == 100)
+	{
+		m_valve.set_valve_state(true);
+	}
 }
 
 int Controller::get_tickrate()
@@ -83,7 +91,7 @@ bool Controller::get_mcp3008_initialized()
 
 bool Controller::get_valve_open_state()
 {
-	return m_valve.get_valve_open_state();
+	return m_valve.get_valve_state();
 }
 
 double Controller::get_mcp3008_reading(int channel)
