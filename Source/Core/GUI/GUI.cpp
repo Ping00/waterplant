@@ -28,7 +28,7 @@ bool GUI::init()
 	//make so no characters will be written if we type
 	noecho();
 
-	resize_term(40, 120);
+	resize_term(30, 100);
 
 	
 	//Resize terminal

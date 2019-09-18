@@ -106,7 +106,8 @@ void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 	m_valve_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_valve_initialized()));
 	m_mcp_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_mcp3008_initialized()));
 
-	//m_sensor_temperature_status_text.set_message(Utilities::get_ok_error_state_msg(controller.get))
+	m_sensor_temperature_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_mcp3008_channel_init_status(0)));
+	m_sensor_moisture_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_mcp3008_channel_init_status(1)));
 
 	m_horizontal_menu.update();
 	if (m_return)

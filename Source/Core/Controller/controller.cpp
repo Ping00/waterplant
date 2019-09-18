@@ -92,6 +92,11 @@ double Controller::get_mcp3008_reading(int channel)
 	return m_mcp3008.get_data(channel);
 }
 
+bool Controller::get_mcp3008_channel_init_status(int channel)
+{
+	return m_mcp3008.get_channel_sensor_initialized(channel);
+}
+
 std::chrono::high_resolution_clock::time_point Controller::get_system_start()
 {
 	return m_start;

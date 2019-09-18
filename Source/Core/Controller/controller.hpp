@@ -48,6 +48,7 @@ class Controller
 		bool	get_valve_open_state();
 
 		double	get_mcp3008_reading(int channel);
+		bool	get_mcp3008_channel_init_status(int channel);
 
 		std::chrono::high_resolution_clock::time_point get_system_start();
 };
