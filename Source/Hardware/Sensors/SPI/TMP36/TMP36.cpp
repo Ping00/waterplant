@@ -1,4 +1,13 @@
 #include "TMP36.hpp"
+TMP36::TMP36()
+{
+
+}
+
+TMP36::~TMP36()
+{
+
+}
 
 double TMP36::format(double data)
 {
@@ -14,12 +23,7 @@ double TMP36::format(double data)
 	return temperature;
 }
 
-TMP36::TMP36()
+void TMP36::load_settings(std::string path)
 {
-
-}
-
-TMP36::~TMP36()
-{
-
+	set_tickrate(WATERPLANT_FILE::read(path, FILE_DATA_TMP36_TICKRATE));
 }

@@ -23,6 +23,8 @@ SPI_SENSOR::~SPI_SENSOR()
 bool SPI_SENSOR::init(int channel)
 {
 	m_channel = channel;
+	load_settings("waterplant_settings.data");
+
 	m_thread = std::thread(&SPI_SENSOR::run, this);
 	m_initialized = true;
 

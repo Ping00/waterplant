@@ -19,14 +19,16 @@ void WATERPLANT_FILE::create(std::string path)
 	if (settings.is_open())
 	{
 		//Add in basic settings data
-		const short int test = 2000;
-		settings.write((char*) &test, sizeof(short int));
+		const short int controller_default_tickrate = 2000;
+		const short int tmp36_default_tickrate = 200;
+		settings.write((char*) &controller_default_tickrate, sizeof(short int));
+		settings.write((char*) &tmp36_default_tickrate, sizeof(short int));
 
 		settings.close();
 	}
 }
 
-int WATERPLANT_FILE::read(std::string path, int offset, int read_bytes)
+int WATERPLANT_FILE::read(std::string path, int offset)
 {
 	unsigned short int data = 0;
 	char bytes[32] = { 0 };
@@ -34,9 +36,10 @@ int WATERPLANT_FILE::read(std::string path, int offset, int read_bytes)
 	std::ifstream settings(path, std::ios::out | std::ios::binary | std::ios::app);
 	if (settings.is_open())
 	{
-		settings.seekg(offset);
-		settings.read(bytes, read_bytes);
-		return bytes[0];
+		settings.seekg(2);
+		settings.read(bytes, offset);
+		data = ((bytes[1] << 8) | (bytes[0] & 0xFF));
+		return data;
 	}
 	return -1;
 }

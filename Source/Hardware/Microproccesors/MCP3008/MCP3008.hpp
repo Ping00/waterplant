@@ -35,5 +35,6 @@ class MCP3008
 
 		bool	get_initialized();
 		bool	get_channel_sensor_initialized(int channel);
+		int		get_channel_sensor_tickrate(int channel);
 };
 #endif // !__MCP3008_HPP__

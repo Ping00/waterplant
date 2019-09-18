@@ -62,3 +62,21 @@ bool MCP3008::get_channel_sensor_initialized(int channel)
 		break;
 	}
 }
+
+int MCP3008::get_channel_sensor_tickrate(int channel)
+{
+	switch (channel)
+	{
+		case 0:
+			return m_tmp36.get_tickrate();
+			break;
+
+		case 1:
+			return m_smsm.get_tickrate();
+			break;
+
+		default:
+			return 0;
+			break;
+	}
+}

@@ -2,14 +2,11 @@
 #include <iostream>
 #include <chrono>
 #include "../../Utilities/WATERPLANT_FILE.hpp"
+#include "../../Utilities/FILE_DATA_POSITIONS.hpp"
 Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
 	m_initialized = false;
-
-	//Default tickrate (TODO, load from .settings file)
-	m_tickrate = 1000;
-	m_tickrate = WATERPLANT_FILE::read("waterplant_settings.data", 0, 2);
 
 }
 
@@ -24,6 +21,9 @@ bool Controller::init()
 {
 	//Get timestamp of initialization
 	m_start = std::chrono::high_resolution_clock::now();
+
+	//Load from settings
+	set_tickrate_milliseconds(WATERPLANT_FILE::read("waterplant_settings.data", 0));
 
 	//Initialize the Analog Digital Converter (MCP3008)
 	m_mcp3008.init(0, 1000000);
@@ -66,11 +66,15 @@ int Controller::get_tickrate()
 
 void Controller::set_tickrate_milliseconds(int tickrate_ms)
 {
+	//Lock when writing to one user (This sensor)
+	std::unique_lock<std::shared_mutex> writer_lock(m_mutex_tickrate);
 	m_tickrate = tickrate_ms;
 }
 
 bool Controller::get_controller_initlialized()
 {
+	//No limit on readers with shared_lock
+	std::shared_lock<std::shared_mutex> reader_lock(m_mutex_tickrate);
 	return m_initialized;
 }
 
@@ -97,6 +101,11 @@ double Controller::get_mcp3008_reading(int channel)
 bool Controller::get_mcp3008_channel_init_status(int channel)
 {
 	return m_mcp3008.get_channel_sensor_initialized(channel);
+}
+
+int Controller::get_mcp3008_channel_tickrate(int channel)
+{
+	return m_mcp3008.get_channel_sensor_tickrate(channel);
 }
 
 std::chrono::high_resolution_clock::time_point Controller::get_system_start()

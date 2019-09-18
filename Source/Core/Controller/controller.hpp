@@ -12,6 +12,9 @@ class Controller
 		//Controller startup time
 		std::chrono::high_resolution_clock::time_point m_start;
 
+		//Our tickrate mutex
+		std::shared_mutex		m_mutex_tickrate;
+
 		//Data models which the Controller watches over
 		//Analog to Digital Converter
 		MCP3008			m_mcp3008;
@@ -49,6 +52,7 @@ class Controller
 
 		double	get_mcp3008_reading(int channel);
 		bool	get_mcp3008_channel_init_status(int channel);
+		int		get_mcp3008_channel_tickrate(int channel);
 
 		std::chrono::high_resolution_clock::time_point get_system_start();
 };
