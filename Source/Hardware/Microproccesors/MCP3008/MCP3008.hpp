@@ -1,7 +1,6 @@
 #ifndef __MCP3008_HPP__
 #define __MCP3008_HPP__
 #include "../../Sensors/SPI/TMP36/TMP36.hpp"
-#include "../../Sensors/SPI/TMP36B/TMP36_B.hpp"
 #include "../../Sensors/SPI/SMSM/SMSM.hpp"
 #include <shared_mutex>
 #include <mutex>
@@ -18,7 +17,7 @@ class MCP3008
 		bool				m_spi_active[8];
 		//SENSOR			m_sensors[8];
 
-		TMP36_B				m_tmp36;
+		TMP36				m_tmp36;
 		SMSM				m_smsm;
 
 	
