@@ -3,7 +3,9 @@
 #include <string>
 class WATERPLANT_FILE
 {
-	static bool exists(std::string path);
-	static void create(std::string path);
+	public:
+		static bool exists(std::string path);
+		static void create(std::string path);
+		static int	read(std::string path, int index, int bytes);
 };
 #endif // !__FILE_HPP__

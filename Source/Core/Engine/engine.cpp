@@ -2,6 +2,7 @@
 #include "engine.hpp"
 #include "../GUI/GUI.hpp"
 #include "../GUI/States/GUI_Startup.hpp"
+#include "../../Utilities/WATERPLANT_FILE.hpp"
 #include <fstream>
 Engine::Engine()
 {
@@ -24,6 +25,11 @@ bool Engine::init()
 		FILE::Create("waterplant_settings.data",DEFAULT);
 	}
 	*/
+	if (!WATERPLANT_FILE::exists("waterplant_settings.data"))
+	{
+		std::cout << "NO FILE EXISTS!!!!!" << std::endl;
+		WATERPLANT_FILE::create("waterplant_settings.data");
+	}
 
 	//
 	m_gui.init();
