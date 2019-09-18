@@ -27,6 +27,7 @@ GUI_Settings::~GUI_Settings()
 
 void GUI_Settings::handle(int input)
 {
+	m_vertical_menu.handle(input);
 	if (input == INPUT_KEY_RETURN)
 	{
 		m_return = true;
@@ -40,6 +41,7 @@ void GUI_Settings::handle(int input)
 void GUI_Settings::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	m_horizontal_menu.update();
+	m_vertical_menu.update();
 	if (m_return)
 	{
 		clear();

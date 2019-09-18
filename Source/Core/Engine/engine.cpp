@@ -2,6 +2,7 @@
 #include "engine.hpp"
 #include "../GUI/GUI.hpp"
 #include "../GUI/States/GUI_Startup.hpp"
+#include <fstream>
 Engine::Engine()
 {
 	//std::cout << "Constructor called for Engine :> (" << this << ")" << std::endl;
