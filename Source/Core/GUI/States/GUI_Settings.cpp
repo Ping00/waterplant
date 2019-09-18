@@ -41,7 +41,7 @@ void GUI_Settings::handle(int input)
 void GUI_Settings::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
 	m_horizontal_menu.update();
-	m_vertical_menu.update();
+	m_vertical_menu.update(controller);
 	if (m_return)
 	{
 		clear();

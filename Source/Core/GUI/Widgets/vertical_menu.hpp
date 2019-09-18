@@ -1,6 +1,7 @@
 #ifndef __VERTICAL_MENU__
 #define __VERTICAL_MENU__
 #include "display_component.hpp"
+#include "../../Controller/controller.hpp"
 class Vertical_Menu
 {
 	private:
@@ -28,7 +29,7 @@ class Vertical_Menu
 		~Vertical_Menu();
 
 		void handle(int input);
-		void update();
+		void update(Controller& controller);
 		void render();
 
 };

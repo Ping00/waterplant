@@ -1,6 +1,7 @@
 #include "controller.hpp"
 #include <iostream>
 #include <chrono>
+#include "../../Utilities/WATERPLANT_FILE.hpp"
 Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
@@ -8,6 +9,7 @@ Controller::Controller()
 
 	//Default tickrate (TODO, load from .settings file)
 	m_tickrate = 1000;
+	m_tickrate = WATERPLANT_FILE::read("waterplant_settings.data", 0, 2);
 
 }
 

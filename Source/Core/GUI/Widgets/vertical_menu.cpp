@@ -59,9 +59,9 @@ void Vertical_Menu::handle(int input)
 
 }
 
-void Vertical_Menu::update()
+void Vertical_Menu::update(Controller& controller)
 {
-
+	m_controller_tickrate_data.set_message(controller.get_tickrate());
 }
 
 void Vertical_Menu::render()
