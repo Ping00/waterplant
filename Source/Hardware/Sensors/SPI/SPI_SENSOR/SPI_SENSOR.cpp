@@ -29,6 +29,11 @@ bool SPI_SENSOR::init(int channel)
 	return m_initialized;
 }
 
+bool SPI_SENSOR::get_init()
+{
+	return m_initialized;
+}
+
 double SPI_SENSOR::poll_sensor()
 {
 	//Get data here

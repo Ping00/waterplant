@@ -42,6 +42,7 @@ public:
 
 	//Start the sensor
 	bool	init(int channel);
+	bool	get_init();
 
 	//Read the data we have stored
 	double	read();
