@@ -19,7 +19,8 @@ private:
 	int						m_tickrate;
 
 	//Mutex for sharing data for other sources so we dont corrupt it
-	std::shared_mutex		m_mutex;
+	std::shared_mutex		m_mutex_data;
+	std::shared_mutex		m_mutex_tickrate;
 
 	//Our data reading
 	double					m_data;
@@ -43,6 +44,9 @@ public:
 	//Start the sensor
 	bool	init(int channel);
 	bool	get_init();
+
+	int		get_tickrate();
+	void	set_tickrate(int ms);
 
 	//Read the data we have stored
 	double	read();

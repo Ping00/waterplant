@@ -16,6 +16,15 @@ Engine::~Engine()
 bool Engine::init()
 {
 	//Init Engine and subsystems
+	//Check if there exists a settings file, if no, create one with defaults, if yes do nothing
+	/*
+	if(!FILE::Exists("waterplant_settings.data"))
+	{
+		FILE::Create("waterplant_settings.data",DEFAULT);
+	}
+	*/
+
+	//
 	m_gui.init();
 	m_controller.init();
 

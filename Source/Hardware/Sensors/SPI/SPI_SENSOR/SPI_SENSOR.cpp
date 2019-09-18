@@ -34,6 +34,20 @@ bool SPI_SENSOR::get_init()
 	return m_initialized;
 }
 
+int SPI_SENSOR::get_tickrate()
+{
+	//No limit on readers with shared_lock
+	std::shared_lock<std::shared_mutex> reader_lock(m_mutex_tickrate);
+	return m_tickrate;
+}
+
+void SPI_SENSOR::set_tickrate(int ms)
+{
+	//Lock when writing to one user (This sensor)
+	std::unique_lock<std::shared_mutex> writer_lock(m_mutex_tickrate);
+	m_tickrate = ms;
+}
+
 double SPI_SENSOR::poll_sensor()
 {
 	//Get data here
@@ -66,13 +80,13 @@ void SPI_SENSOR::run()
 void SPI_SENSOR::write(double data)
 {
 	//Lock when writing to one user (This sensor)
-	std::unique_lock<std::shared_mutex> writer_lock(m_mutex);
+	std::unique_lock<std::shared_mutex> writer_lock(m_mutex_data);
 	m_data = data;
 }
 
 double SPI_SENSOR::read()
 {
 	//No limit on readers with shared_lock
-	std::shared_lock<std::shared_mutex> reader_lock(m_mutex);
+	std::shared_lock<std::shared_mutex> reader_lock(m_mutex_data);
 	return m_data;
 }
