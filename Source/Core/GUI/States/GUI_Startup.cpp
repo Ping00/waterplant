@@ -26,7 +26,7 @@ GUI_Startup::GUI_Startup()
 	m_titlecard.set_color(GUI_COLOR_WHITE_BLUE);
 	m_titlecard.load_graphic("titlecard.graphic");
 
-	m_timer.set_timer_seconds(1);
+	m_timer.set_timer_seconds(4);
 	m_timer.start_timer();
 }
 

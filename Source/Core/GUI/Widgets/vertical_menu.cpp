@@ -63,7 +63,11 @@ void Vertical_Menu::update(Controller& controller)
 {
 	m_controller_tickrate_data.set_message(controller.get_tickrate());
 	m_tmp36_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(0));
+	m_smsm_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(1));
+	m_smsm_sensor_begin_watering_data.set_message(controller.get_valve_open_value());
+	m_smsm_sensor_stop_watering_data.set_message(controller.get_valve_close_value());
 }
+
 
 void Vertical_Menu::render()
 {

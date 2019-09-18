@@ -21,8 +21,15 @@ void WATERPLANT_FILE::create(std::string path)
 		//Add in basic settings data
 		const short int controller_default_tickrate = 2000;
 		const short int tmp36_default_tickrate = 200;
+		const short int smsm_default_tickrate = 200;
+		const short int valve_open_default_value = 20;
+		const short int valve_close_default_value = 100;
+
 		settings.write((char*) &controller_default_tickrate, sizeof(short int));
 		settings.write((char*) &tmp36_default_tickrate, sizeof(short int));
+		settings.write((char*) &smsm_default_tickrate, sizeof(short int));
+		settings.write((char*) &valve_open_default_value, sizeof(short int));
+		settings.write((char*) &valve_close_default_value, sizeof(short int));
 
 		settings.close();
 	}

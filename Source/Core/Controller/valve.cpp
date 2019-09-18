@@ -1,5 +1,6 @@
 #include "valve.hpp"
-
+#include "../../Utilities/FILE_DATA_POSITIONS.hpp"
+#include "../../Utilities/WATERPLANT_FILE.hpp"
 Valve::Valve()
 {
 	m_initialized = false;
@@ -12,6 +13,9 @@ Valve::~Valve()
 
 bool Valve::init()
 {
+	set_open_value(WATERPLANT_FILE::read("waterplant_settings.data", FILE_DATA_VALVE_OPEN_VALUE));
+	set_close_value(WATERPLANT_FILE::read("waterplant_settings.data", FILE_DATA_VALVE_CLOSE_VALUE));
+
 	m_initialized = true;
 	return m_initialized;
 }

@@ -54,6 +54,9 @@ class Controller
 		bool	get_mcp3008_channel_init_status(int channel);
 		int		get_mcp3008_channel_tickrate(int channel);
 
+		int		get_valve_open_value();
+		int		get_valve_close_value();
+
 		std::chrono::high_resolution_clock::time_point get_system_start();
 };
 #endif // !__CONTROLLER_HPP__

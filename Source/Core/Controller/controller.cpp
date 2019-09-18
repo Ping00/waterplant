@@ -23,7 +23,7 @@ bool Controller::init()
 	m_start = std::chrono::high_resolution_clock::now();
 
 	//Load from settings
-	set_tickrate_milliseconds(WATERPLANT_FILE::read("waterplant_settings.data", 0));
+	set_tickrate_milliseconds(WATERPLANT_FILE::read("waterplant_settings.data", FILE_DATA_CONTROLLER_TICKRATE));
 
 	//Initialize the Analog Digital Converter (MCP3008)
 	m_mcp3008.init(0, 1000000);
@@ -106,6 +106,16 @@ bool Controller::get_mcp3008_channel_init_status(int channel)
 int Controller::get_mcp3008_channel_tickrate(int channel)
 {
 	return m_mcp3008.get_channel_sensor_tickrate(channel);
+}
+
+int Controller::get_valve_open_value()
+{
+	return m_valve.get_open_value();
+}
+
+int Controller::get_valve_close_value()
+{
+	return m_valve.get_close_value();
 }
 
 std::chrono::high_resolution_clock::time_point Controller::get_system_start()
