@@ -13,6 +13,16 @@ class GUI_Settings : public GUI_BASE
 		//Inputs
 		bool				m_return;
 
+		//----
+		Display_Component	m_controller_check_rate_text;
+		Display_Component	m_controller_check_rate_data;
+
+		Display_Component	m_tmp36_sensor_poll_rate_text;
+		Display_Component	m_tmp36_sensor_poll_rate_data;
+
+		Display_Component	m_msms_sensor_poll_rate_text;
+		Display_Component	m_msms_sensor_poll_rate_data;
+
 	public:
 		GUI_Settings();
 		~GUI_Settings();
