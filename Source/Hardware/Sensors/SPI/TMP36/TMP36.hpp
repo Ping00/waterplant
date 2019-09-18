@@ -43,6 +43,9 @@ class TMP36
 		//Start the sensor
 		bool	init			(int channel);
 
+		//get sensor init status
+		bool	get_init();
+
 		//Read the data we have stored
 		double	read			();
 

@@ -23,6 +23,11 @@ bool TMP36::init(int channel)
 	return m_initialized;
 }
 
+bool TMP36::get_init()
+{
+	return m_initialized;
+}
+
 double TMP36::format(double data)
 {
 	//Converts our ADC results into the proper format to be read (Depending on device)

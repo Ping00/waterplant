@@ -54,4 +54,6 @@ void GUI_Settings::render()
 	m_current_menu_title.render();
 	m_horizontal_menu.render();
 	m_splitting_line.render();
+
+	m_vertical_menu.render();
 }

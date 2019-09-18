@@ -4,7 +4,6 @@ MCP3008::MCP3008()
 {
 	std::cout << "Constructor called for MCP3008 :> (" << this << ")" << std::endl;
 	m_initialized	= false;
-	m_spi_active[8] = { false };
 }
 
 MCP3008::~MCP3008()
@@ -44,4 +43,22 @@ double MCP3008::get_data(int channel)
 bool MCP3008::get_initialized()
 {
 	return m_initialized;
+}
+
+bool MCP3008::get_channel_sensor_initialized(int channel)
+{
+	switch (channel)
+	{
+		case 0:
+			return m_tmp36.get_init();
+			break;
+
+		case 1:
+			return m_smsm.get_init();
+			break;
+
+		default:
+		return false;
+		break;
+	}
 }

@@ -7,9 +7,8 @@ Controller::Controller()
 	m_initialized = false;
 
 	//Default tickrate (TODO, load from .settings file)
-	m_tickrate = 100;
+	m_tickrate = 1000;
 
-	m_test = 0;
 }
 
 Controller::~Controller()
@@ -56,12 +55,6 @@ void Controller::check()
 	//Examine if data allows for valve to be opened/closed
 	//Open or Close valve
 	//Turn of LED
-
-	m_test++;
-	if (m_test == 100)
-	{
-		m_valve.set_valve_state(true);
-	}
 }
 
 int Controller::get_tickrate()

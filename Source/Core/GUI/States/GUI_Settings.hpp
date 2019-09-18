@@ -2,6 +2,7 @@
 #define __GUI_SETTINGS_HPP__
 #include "GUI_BASE.hpp"
 #include "../Widgets/horizontal_menu.hpp"
+#include "../Widgets/vertical_menu.hpp"
 class GUI_Settings : public GUI_BASE
 {
 	private:
@@ -14,14 +15,7 @@ class GUI_Settings : public GUI_BASE
 		bool				m_return;
 
 		//----
-		Display_Component	m_controller_check_rate_text;
-		Display_Component	m_controller_check_rate_data;
-
-		Display_Component	m_tmp36_sensor_poll_rate_text;
-		Display_Component	m_tmp36_sensor_poll_rate_data;
-
-		Display_Component	m_msms_sensor_poll_rate_text;
-		Display_Component	m_msms_sensor_poll_rate_data;
+		Vertical_Menu		m_vertical_menu;
 
 	public:
 		GUI_Settings();
