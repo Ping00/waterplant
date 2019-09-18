@@ -6,13 +6,15 @@ class Valve
 {
 	private:
 		bool	m_initialized;
-		bool	m_valve_open;
 
+		bool	m_valve_open;
 		int		m_close_threshold;
 		int		m_open_threshold;
 
 		//Mutex for sharing data for other sources so we dont corrupt it
-		std::shared_mutex		m_mutex;
+		std::shared_mutex		m_mutex_lower_value;
+		std::shared_mutex		m_mutex_upper_value;
+		std::shared_mutex		m_mutex_valve_status;
 		
 
 	public:
