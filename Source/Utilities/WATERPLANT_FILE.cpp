@@ -31,13 +31,13 @@ void WATERPLANT_FILE::create(std::string path)
 int WATERPLANT_FILE::read(std::string path, int offset)
 {
 	unsigned short int data = 0;
-	char bytes[32] = { 0 };
+	char bytes[2] = { 0 };
 
 	std::ifstream settings(path, std::ios::out | std::ios::binary | std::ios::app);
 	if (settings.is_open())
 	{
-		settings.seekg(2);
-		settings.read(bytes, offset);
+		settings.seekg(offset);
+		settings.read(bytes, 2);
 		data = ((bytes[1] << 8) | (bytes[0] & 0xFF));
 		return data;
 	}
