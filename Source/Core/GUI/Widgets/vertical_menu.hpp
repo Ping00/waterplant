@@ -22,7 +22,9 @@ class Vertical_Menu
 
 
 		int		m_menu_selection;
-		bool	m_setting_selected;
+		int		m_config_selection;
+
+		int		m_setting_state;
 
 
 	public:
@@ -33,5 +35,6 @@ class Vertical_Menu
 		void update(Controller& controller);
 		void render();
 
+		int get_setting_selected();
 };
 #endif // !__VERTIVAL_MENU__

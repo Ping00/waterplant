@@ -5,7 +5,7 @@ Vertical_Menu::Vertical_Menu()
 {
 	//Default our menu index to the first item
 	m_menu_selection = 0;
-	m_setting_selected = false;
+	m_setting_state = 1;
 
 	m_controller_tickrate_text.set_message_max_length(40);
 	m_controller_tickrate_text.set_message("Controller Update Rate        (sec):");
@@ -59,26 +59,49 @@ void Vertical_Menu::handle(int input)
 {
 	if (input != -1)
 	{
-		if (!m_setting_selected)
+		if (m_setting_state < 2)
 		{
 			switch (input)
 			{
-			case INPUT_ARROW_KEY_DOWN:
-				if (m_menu_selection < 4)
-					m_menu_selection++;
-				break;
+				case INPUT_ARROW_KEY_DOWN:
+					if (m_menu_selection < 4)
+						m_menu_selection++;
+					break;
 
-			case INPUT_ARROW_KEY_UP:
-				if (m_menu_selection > 0)
-					m_menu_selection--;
-				break;
+				case INPUT_ARROW_KEY_UP:
+					if (m_menu_selection > 0)
+						m_menu_selection--;
+					break;
 
-			case INPUT_KEY_ENTER:
-				m_setting_selected = true;
-				break;
+				case INPUT_KEY_ENTER:
+					m_setting_state = 2;
+					break;
 
-			default:
-				break;
+				case INPUT_KEY_RETURN:
+					m_setting_state -= 1;
+
+				default:
+					break;
+			}
+		}
+		else
+		{
+			switch (input)
+			{
+				case INPUT_ARROW_KEY_DOWN:
+
+					break;
+
+				case INPUT_ARROW_KEY_UP:
+
+					break;
+
+				case INPUT_KEY_RETURN:
+					m_setting_state -= 1;
+					break;
+
+				default:
+					break;
 			}
 		}
 	}
@@ -86,7 +109,7 @@ void Vertical_Menu::handle(int input)
 
 void Vertical_Menu::update(Controller& controller)
 {
-	//Default colors for all settings
+	//Default colors for all settings text
 	m_controller_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_tmp36_sensor_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_smsm_sensor_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
@@ -120,6 +143,8 @@ void Vertical_Menu::update(Controller& controller)
 			break;
 	}
 
+	//Update setting values
+
 	//---
 	m_controller_tickrate_data.set_message(controller.get_tickrate());
 	m_tmp36_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(0));
@@ -145,4 +170,9 @@ void Vertical_Menu::render()
 
 	m_smsm_sensor_stop_watering_text.render();
 	m_smsm_sensor_stop_watering_data.render();
+}
+
+int Vertical_Menu::get_setting_selected()
+{
+	return m_setting_state;
 }

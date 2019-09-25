@@ -42,7 +42,7 @@ void GUI_Settings::update(std::unique_ptr<GUI_BASE>& menu, Controller& controlle
 {
 	m_horizontal_menu.update();
 	m_vertical_menu.update(controller);
-	if (m_return)
+	if (m_return && m_vertical_menu.get_setting_selected() == 0)
 	{
 		clear();
 		std::unique_ptr<GUI_Overview> x = std::make_unique<GUI_Overview>();
