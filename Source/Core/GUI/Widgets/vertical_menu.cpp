@@ -8,6 +8,7 @@ Vertical_Menu::Vertical_Menu()
 	m_setting_state = 1;
 	m_modified_setting_value = 0;
 	m_base_value_set = false;
+	m_save_settings = false;
 
 	m_controller_tickrate_text.set_message_max_length(40);
 	m_controller_tickrate_text.set_message("Controller Update Rate        (sec):");
@@ -205,6 +206,33 @@ void Vertical_Menu::update(Controller& controller)
 	//save new values
 	if (m_save_settings)
 	{
+		//Set sensor setting, and save to file
+		switch (m_menu_selection)
+		{
+			case 0:
+				controller.set_tickrate_seconds(m_modified_setting_value);
+				break;
+
+			case 1:
+				controller.set_mcp3008_channel_tickrate(0, m_modified_setting_value);
+				break;
+
+			case 2:
+				controller.set_mcp3008_channel_tickrate(1, m_modified_setting_value);
+				break;
+
+			case 3:
+				controller.set_valve_open_value(m_modified_setting_value);
+
+				break;
+
+			case 4:
+				controller.set_valve_close_value(m_modified_setting_value);
+				break;
+
+			default:
+				break;
+		}
 
 		//Reset save settings after complete
 		m_save_settings = false;

@@ -41,7 +41,7 @@ class Controller
 		void check();
 
 		int		get_tickrate();
-		void	set_tickrate_milliseconds(int ms);
+		void	set_tickrate_seconds(int sec);
 
 		//----
 		bool	get_controller_initlialized();
@@ -56,6 +56,11 @@ class Controller
 
 		int		get_valve_open_value();
 		int		get_valve_close_value();
+
+		void	set_valve_open_value(int value);
+		void	set_valve_close_value(int value);
+
+		void	set_mcp3008_channel_tickrate(int channel, int tickrate);
 
 		std::chrono::high_resolution_clock::time_point get_system_start();
 };

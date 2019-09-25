@@ -23,7 +23,7 @@ bool Controller::init()
 	m_start = std::chrono::high_resolution_clock::now();
 
 	//Load from settings
-	set_tickrate_milliseconds(WATERPLANT_FILE::read("waterplant_settings.data", FILE_DATA_CONTROLLER_TICKRATE));
+	set_tickrate_seconds(WATERPLANT_FILE::read("waterplant_settings.data", FILE_DATA_CONTROLLER_TICKRATE));
 
 	//Initialize the Analog Digital Converter (MCP3008)
 	m_mcp3008.init(0, 1000000);
@@ -64,11 +64,11 @@ int Controller::get_tickrate()
 	return m_tickrate;
 }
 
-void Controller::set_tickrate_milliseconds(int tickrate_ms)
+void Controller::set_tickrate_seconds(int tickrate_sec)
 {
 	//Lock when writing to one user (This sensor)
 	std::unique_lock<std::shared_mutex> writer_lock(m_mutex_tickrate);
-	m_tickrate = tickrate_ms;
+	m_tickrate = tickrate_sec;
 }
 
 bool Controller::get_controller_initlialized()
@@ -116,6 +116,21 @@ int Controller::get_valve_open_value()
 int Controller::get_valve_close_value()
 {
 	return m_valve.get_close_value();
+}
+
+void Controller::set_valve_open_value(int value)
+{
+	m_valve.set_open_value(value);
+}
+
+void Controller::set_valve_close_value(int value)
+{
+	m_valve.set_close_value(value);
+}
+
+void Controller::set_mcp3008_channel_tickrate(int channel, int tickrate)
+{
+	m_mcp3008.set_channel_sensor_tickrate(channel, tickrate);
 }
 
 std::chrono::high_resolution_clock::time_point Controller::get_system_start()
