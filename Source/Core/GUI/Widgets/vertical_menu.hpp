@@ -21,7 +21,8 @@ class Vertical_Menu
 		Display_Component	m_smsm_sensor_stop_watering_data;
 
 
-		int	m_menu_selection;
+		int		m_menu_selection;
+		bool	m_setting_selected;
 
 
 	public:

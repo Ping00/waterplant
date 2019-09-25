@@ -5,6 +5,7 @@ Vertical_Menu::Vertical_Menu()
 {
 	//Default our menu index to the first item
 	m_menu_selection = 0;
+	m_setting_selected = false;
 
 	m_controller_tickrate_text.set_message_max_length(40);
 	m_controller_tickrate_text.set_message("Controller Update Rate        (sec):");
@@ -58,20 +59,27 @@ void Vertical_Menu::handle(int input)
 {
 	if (input != -1)
 	{
-		switch (input)
+		if (!m_setting_selected)
 		{
-		case INPUT_ARROW_KEY_DOWN:
-			if (m_menu_selection < 4)
-				m_menu_selection++;
-			break;
+			switch (input)
+			{
+			case INPUT_ARROW_KEY_DOWN:
+				if (m_menu_selection < 4)
+					m_menu_selection++;
+				break;
 
-		case INPUT_ARROW_KEY_UP:
-			if (m_menu_selection > 0)
-				m_menu_selection--;
-			break;
+			case INPUT_ARROW_KEY_UP:
+				if (m_menu_selection > 0)
+					m_menu_selection--;
+				break;
 
-		default:
-			break;
+			case INPUT_KEY_ENTER:
+				m_setting_selected = true;
+				break;
+
+			default:
+				break;
+			}
 		}
 	}
 }
