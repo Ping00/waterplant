@@ -91,20 +91,22 @@ void Vertical_Menu::handle(int input)
 		{
 			switch (input)
 			{
-				case INPUT_ARROW_KEY_DOWN:
-					//Check which setting we are modifying
-					break;
-
-				case INPUT_ARROW_KEY_UP:
-
-					break;
-
 				case INPUT_ARROW_KEY_LEFT:
-
+					if (m_modified_setting_value > 0)
+						m_modified_setting_value -= 1;
 					break;
 
 				case INPUT_ARROW_KEY_RIGHT:
-					//Check
+					m_modified_setting_value += 1;
+					break;
+
+				case INPUT_ARROW_KEY_DOWN:
+					if (m_modified_setting_value >= 10)
+						m_modified_setting_value -= 10;
+					break;
+
+				case INPUT_ARROW_KEY_UP:
+					m_modified_setting_value += 10;
 					break;
 
 				case INPUT_KEY_RETURN:
