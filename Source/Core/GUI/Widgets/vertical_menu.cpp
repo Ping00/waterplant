@@ -78,7 +78,7 @@ void Vertical_Menu::handle(int input)
 					break;
 
 				case INPUT_KEY_RETURN:
-					m_setting_state -= 1;
+					m_setting_state = 0;
 
 				default:
 					break;
@@ -97,7 +97,12 @@ void Vertical_Menu::handle(int input)
 					break;
 
 				case INPUT_KEY_RETURN:
-					m_setting_state -= 1;
+					m_setting_state = 1;
+					break;
+
+				case INPUT_KEY_ENTER:
+					m_save_settings = true;
+					m_setting_state = 1;
 					break;
 
 				default:
@@ -143,7 +148,49 @@ void Vertical_Menu::update(Controller& controller)
 			break;
 	}
 
-	//Update setting values
+	//Update setting values if in correct state
+	m_controller_tickrate_data.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_tmp36_sensor_tickrate_data.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_smsm_sensor_tickrate_data.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_smsm_sensor_begin_watering_data.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_smsm_sensor_stop_watering_data.set_message_color(GUI_COLOR_WHITE_BLUE);
+	
+	if (m_setting_state == 2)
+	{
+		switch (m_menu_selection)
+		{
+		case 0:
+			m_controller_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 1:
+			m_tmp36_sensor_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 2:
+			m_smsm_sensor_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 3:
+			m_smsm_sensor_begin_watering_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 4:
+			m_smsm_sensor_stop_watering_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	//save new values
+	if (m_save_settings)
+	{
+
+		//Reset save settings after complete
+		m_save_settings = false;
+	}
 
 	//---
 	m_controller_tickrate_data.set_message(controller.get_tickrate());

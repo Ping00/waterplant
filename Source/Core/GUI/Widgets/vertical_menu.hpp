@@ -22,9 +22,10 @@ class Vertical_Menu
 
 
 		int		m_menu_selection;
-		int		m_config_selection;
 
 		int		m_setting_state;
+
+		bool	m_save_settings;
 
 
 	public:
