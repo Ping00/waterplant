@@ -6,6 +6,7 @@ Vertical_Menu::Vertical_Menu()
 	//Default our menu index to the first item
 	m_menu_selection = 0;
 	m_setting_state = 1;
+	m_modified_setting_value = 0;
 
 	m_controller_tickrate_text.set_message_max_length(40);
 	m_controller_tickrate_text.set_message("Controller Update Rate        (sec):");
@@ -89,15 +90,24 @@ void Vertical_Menu::handle(int input)
 			switch (input)
 			{
 				case INPUT_ARROW_KEY_DOWN:
-
+					//Check which setting we are modifying
 					break;
 
 				case INPUT_ARROW_KEY_UP:
 
 					break;
 
+				case INPUT_ARROW_KEY_LEFT:
+
+					break;
+
+				case INPUT_ARROW_KEY_RIGHT:
+					//Check
+					break;
+
 				case INPUT_KEY_RETURN:
 					m_setting_state = 1;
+					m_save_settings = false;
 					break;
 
 				case INPUT_KEY_ENTER:
@@ -192,12 +202,16 @@ void Vertical_Menu::update(Controller& controller)
 		m_save_settings = false;
 	}
 
+	//Update value only if we are not modifying it 
 	//---
-	m_controller_tickrate_data.set_message(controller.get_tickrate());
-	m_tmp36_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(0));
-	m_smsm_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(1));
-	m_smsm_sensor_begin_watering_data.set_message(controller.get_valve_open_value());
-	m_smsm_sensor_stop_watering_data.set_message(controller.get_valve_close_value());
+	if (m_setting_state != 2)
+	{
+		m_controller_tickrate_data.set_message(controller.get_tickrate());
+		m_tmp36_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(0));
+		m_smsm_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(1));
+		m_smsm_sensor_begin_watering_data.set_message(controller.get_valve_open_value());
+		m_smsm_sensor_stop_watering_data.set_message(controller.get_valve_close_value());
+	}
 }
 
 
