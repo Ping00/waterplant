@@ -28,6 +28,7 @@ class Vertical_Menu
 		bool	m_save_settings;
 
 		int		m_modified_setting_value;
+		bool	m_base_value_set;
 
 
 	public:

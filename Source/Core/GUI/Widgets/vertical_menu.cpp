@@ -7,6 +7,7 @@ Vertical_Menu::Vertical_Menu()
 	m_menu_selection = 0;
 	m_setting_state = 1;
 	m_modified_setting_value = 0;
+	m_base_value_set = false;
 
 	m_controller_tickrate_text.set_message_max_length(40);
 	m_controller_tickrate_text.set_message("Controller Update Rate        (sec):");
@@ -76,6 +77,7 @@ void Vertical_Menu::handle(int input)
 
 				case INPUT_KEY_ENTER:
 					m_setting_state = 2;
+					m_base_value_set = false;
 					break;
 
 				case INPUT_KEY_RETURN:
@@ -124,6 +126,8 @@ void Vertical_Menu::handle(int input)
 
 void Vertical_Menu::update(Controller& controller)
 {
+
+
 	//Default colors for all settings text
 	m_controller_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_tmp36_sensor_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
@@ -167,30 +171,32 @@ void Vertical_Menu::update(Controller& controller)
 	
 	if (m_setting_state == 2)
 	{
+		//Set our color to the correct one
+		//And temp color variable
 		switch (m_menu_selection)
 		{
-		case 0:
-			m_controller_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
-			break;
+			case 0:
+				m_controller_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+				break;
 
-		case 1:
-			m_tmp36_sensor_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
-			break;
+			case 1:
+				m_tmp36_sensor_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+				break;
 
-		case 2:
-			m_smsm_sensor_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
-			break;
+			case 2:
+				m_smsm_sensor_tickrate_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+				break;
 
-		case 3:
-			m_smsm_sensor_begin_watering_data.set_message_color(GUI_COLOR_BLUE_WHITE);
-			break;
+			case 3:
+				m_smsm_sensor_begin_watering_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+				break;
 
-		case 4:
-			m_smsm_sensor_stop_watering_data.set_message_color(GUI_COLOR_BLUE_WHITE);
-			break;
+			case 4:
+				m_smsm_sensor_stop_watering_data.set_message_color(GUI_COLOR_BLUE_WHITE);
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 
@@ -211,6 +217,67 @@ void Vertical_Menu::update(Controller& controller)
 		m_smsm_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(1));
 		m_smsm_sensor_begin_watering_data.set_message(controller.get_valve_open_value());
 		m_smsm_sensor_stop_watering_data.set_message(controller.get_valve_close_value());
+	}
+	else
+	{
+		//if we have not yet grabbed the current variable
+		if (m_base_value_set == false)
+		{
+			m_modified_setting_value = 0;
+			switch (m_menu_selection)
+			{
+				case 0:
+					m_modified_setting_value = controller.get_tickrate();
+					break;
+
+				case 1:
+					m_modified_setting_value = controller.get_mcp3008_channel_tickrate(0);
+					break;
+
+				case 2:
+					m_modified_setting_value = controller.get_mcp3008_channel_tickrate(1);
+					break;
+
+				case 3:
+					m_modified_setting_value = controller.get_valve_open_value();
+					break;
+
+				case 4:
+					m_modified_setting_value = controller.get_valve_close_value();
+					break;
+
+				default:
+					break;
+			}
+			m_base_value_set = true;
+		}
+
+		//Update the value we are modifying with the custom value
+		switch (m_menu_selection)
+		{
+			case 0:
+				m_controller_tickrate_data.set_message(m_modified_setting_value);
+				break;
+
+			case 1:
+				m_tmp36_sensor_tickrate_data.set_message(m_modified_setting_value);
+				break;
+
+			case 2:
+				m_smsm_sensor_tickrate_data.set_message(m_modified_setting_value);
+				break;
+
+			case 3:
+				m_smsm_sensor_begin_watering_data.set_message(m_modified_setting_value);
+				break;
+
+			case 4:
+				m_smsm_sensor_stop_watering_data.set_message(m_modified_setting_value);
+				break;
+
+		default:
+			break;
+		}
 	}
 }
 
