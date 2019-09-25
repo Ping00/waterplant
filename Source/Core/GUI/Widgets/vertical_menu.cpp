@@ -7,7 +7,7 @@ Vertical_Menu::Vertical_Menu()
 	m_menu_selection = 0;
 
 	m_controller_tickrate_text.set_message_max_length(40);
-	m_controller_tickrate_text.set_message("Controller Update Rate         (ms):");
+	m_controller_tickrate_text.set_message("Controller Update Rate        (sec):");
 	m_controller_tickrate_text.set_position(4, 7);
 	
 	m_controller_tickrate_data.set_message_max_length(20);
@@ -56,11 +56,63 @@ Vertical_Menu::~Vertical_Menu()
 
 void Vertical_Menu::handle(int input)
 {
+	if (input != -1)
+	{
+		switch (input)
+		{
+		case INPUT_ARROW_KEY_DOWN:
+			if (m_menu_selection < 4)
+				m_menu_selection++;
+			break;
 
+		case INPUT_ARROW_KEY_UP:
+			if (m_menu_selection > 0)
+				m_menu_selection--;
+			break;
+
+		default:
+			break;
+		}
+	}
 }
 
 void Vertical_Menu::update(Controller& controller)
 {
+	//Default colors for all settings
+	m_controller_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_tmp36_sensor_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_smsm_sensor_tickrate_text.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_smsm_sensor_begin_watering_text.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_smsm_sensor_stop_watering_text.set_message_color(GUI_COLOR_WHITE_BLUE);
+
+	//Update highlight if setting has been selected
+	switch (m_menu_selection)
+	{
+		case 0:
+			m_controller_tickrate_text.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 1:
+			m_tmp36_sensor_tickrate_text.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 2:
+			m_smsm_sensor_tickrate_text.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 3:
+			m_smsm_sensor_begin_watering_text.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		case 4:
+			m_smsm_sensor_stop_watering_text.set_message_color(GUI_COLOR_BLUE_WHITE);
+			break;
+
+		default:
+			break;
+	}
+
+	//---
 	m_controller_tickrate_data.set_message(controller.get_tickrate());
 	m_tmp36_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(0));
 	m_smsm_sensor_tickrate_data.set_message(controller.get_mcp3008_channel_tickrate(1));

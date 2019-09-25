@@ -42,7 +42,7 @@ void Controller::run()
 	while (true)
 	{
 		//Sleep thread until tickrate for check
-		std::this_thread::sleep_for(std::chrono::milliseconds(m_tickrate));
+		std::this_thread::sleep_for(std::chrono::seconds(m_tickrate));
 		check();
 	}
 }

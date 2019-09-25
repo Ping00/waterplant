@@ -27,7 +27,6 @@ bool Engine::init()
 	*/
 	if (!WATERPLANT_FILE::exists("waterplant_settings.data"))
 	{
-		std::cout << "NO FILE EXISTS!!!!!" << std::endl;
 		WATERPLANT_FILE::create("waterplant_settings.data");
 	}
 
