@@ -7,5 +7,6 @@ class WATERPLANT_FILE
 		static bool exists(std::string path);
 		static void create(std::string path);
 		static int	read(std::string path, int offset);
+		static void overwrite(std::string path, int offset, const short int data);
 };
 #endif // !__FILE_HPP__

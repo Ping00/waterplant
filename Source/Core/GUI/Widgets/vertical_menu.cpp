@@ -211,23 +211,28 @@ void Vertical_Menu::update(Controller& controller)
 		{
 			case 0:
 				controller.set_tickrate_seconds(m_modified_setting_value);
+				WATERPLANT_FILE::overwrite("waterplant_settings.data", 0, m_modified_setting_value);
 				break;
 
 			case 1:
 				controller.set_mcp3008_channel_tickrate(0, m_modified_setting_value);
+				WATERPLANT_FILE::overwrite("waterplant_settings.data", 2, m_modified_setting_value);
 				break;
 
 			case 2:
 				controller.set_mcp3008_channel_tickrate(1, m_modified_setting_value);
+				WATERPLANT_FILE::overwrite("waterplant_settings.data", 4, m_modified_setting_value);
 				break;
 
 			case 3:
 				controller.set_valve_open_value(m_modified_setting_value);
+				WATERPLANT_FILE::overwrite("waterplant_settings.data", 6, m_modified_setting_value);
 
 				break;
 
 			case 4:
 				controller.set_valve_close_value(m_modified_setting_value);
+				WATERPLANT_FILE::overwrite("waterplant_settings.data", 8, m_modified_setting_value);
 				break;
 
 			default:

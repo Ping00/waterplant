@@ -15,7 +15,7 @@ bool WATERPLANT_FILE::exists(std::string path)
 void WATERPLANT_FILE::create(std::string path)
 {
 	//create/open file
-	std::ofstream settings(path, std::ios::out | std::ios::binary);
+	std::ofstream settings(path, std::ios::out | std::ios::binary | std::ios::app);
 	if (settings.is_open())
 	{
 		//Add in basic settings data
@@ -40,13 +40,26 @@ int WATERPLANT_FILE::read(std::string path, int offset)
 	unsigned short int data = 0;
 	char bytes[2] = { 0 };
 
-	std::ifstream settings(path, std::ios::out | std::ios::binary | std::ios::app);
+	std::ifstream settings(path, std::ios::in | std::ios::binary);
 	if (settings.is_open())
 	{
 		settings.seekg(offset);
 		settings.read(bytes, 2);
 		data = ((bytes[1] << 8) | (bytes[0] & 0xFF));
+		settings.close();
 		return data;
 	}
 	return -1;
+}
+
+void WATERPLANT_FILE::overwrite(std::string path, int offset, const short int data)
+{
+	//Overwrites bytes at specified location
+	std::ofstream settings(path, std::ios::out | std::ios::in | std::ios::binary);
+	if (settings.is_open())
+	{
+		settings.seekp(offset, std::ios::beg);
+		settings.write((char*)& data, sizeof(short int));
+		settings.close();
+	}
 }
