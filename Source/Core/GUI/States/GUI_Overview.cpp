@@ -94,7 +94,7 @@ void GUI_Overview::update(std::unique_ptr<GUI_BASE>& menu, Controller& controlle
 	m_current_temperature_data.set_message(Utilities::convert_temp_data_to_string(controller.get_mcp3008_reading(0)));
 
 	//Update soil moisture
-	m_current_smsm_value_data.set_message((int)(controller.get_mcp3008_reading(1)));
+	m_current_smsm_value_data.set_message((controller.get_mcp3008_reading(1)));
 
 	//Set valve status
 	m_valve_open_data.set_message(Utilities::get_open_closed_state_msg(controller.get_valve_open_state()));

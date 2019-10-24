@@ -1,7 +1,7 @@
 #include "MCP3008.hpp"
 #include <iostream>
-//#include <wiringPi.h>
-//#include <wiringPiSPI.h>
+#include <wiringPi.h>
+#include <wiringPiSPI.h>
 MCP3008::MCP3008()
 {
 	std::cout << "Constructor called for MCP3008 :> (" << this << ")" << std::endl;
@@ -16,21 +16,27 @@ MCP3008::~MCP3008()
 
 bool MCP3008::init(int channel, int clock)
 {
-	/*
-	//PI
-    //Start MCP3008 connection with wiringpi
-    m_file_descriptor = wiringPiSPISetup(spi_channel, 1000000);
-    if(m_file_descriptor < 0)
-    {
-        std::cout << "Failed to open SPI BUS" << std::endl;
-        m_initialized = false;
-        return m_initialized;
-    }
+	//The pi has two channels 0 & 1
+	int spi_channel = 0;
 
-    wiringPiSetup();
-	*/
+	//Load SPI Drivers
+	if (system("gpio load spi") == -1)
+	{
+		std::cout << "Can't load the SPI driver: " << std::endl;
+		return false;
+	}
 
-	//Init all our sensors,
+	//Setup Wiringpi
+	wiringPiSetup();
+
+	//Setup WiringPiSPI
+	if ((m_file_descriptor = wiringPiSPISetup(spi_channel, 1000000)) < 0)
+	{
+		std::cout << "Failed to open SPI BUS: " << std::endl;
+		return false;
+	}
+
+	//Init Sensors
 	m_tmp36.init(0);
 	m_smsm.init(1);
 
@@ -51,10 +57,10 @@ double MCP3008::get_data(int channel)
 			break;
 
 		default:
-			return 0;
+			return -1;
 			break;
 	}
-	return 0;
+	return -1;
 }
 
 bool MCP3008::get_initialized()
@@ -93,7 +99,7 @@ int MCP3008::get_channel_sensor_tickrate(int channel)
 			break;
 
 		default:
-			return 0;
+			return -1;
 			break;
 	}
 }

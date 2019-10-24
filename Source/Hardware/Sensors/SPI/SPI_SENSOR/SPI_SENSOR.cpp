@@ -1,5 +1,7 @@
 #include "SPI_SENSOR.hpp"
 #include <iostream>
+#include <wiringPi.h>
+#include <wiringPiSPI.h>
 SPI_SENSOR::SPI_SENSOR()
 {
 	std::cout << "Constructor called for SPI_SENSOR :> (" << this << ")" << std::endl;
@@ -58,20 +60,12 @@ double SPI_SENSOR::poll_sensor()
 	//TODO USE M_CHANNEL TO USE PROPER MCP3008 channel
 	
 	//PI
-	/*
-	if(m_initialized)
-    {
-        unsigned char buffer[3] = {1};
-        buffer[1] = (8 + 0) << 4;
-        wiringPiSPIDataRW(m_channel, buffer, 3);
-        return ( (buffer[1] & 3) << 8 ) + buffer[2];
-    }
-    else
-    {
-      	return -1.0;
-    }
-	*/
-	return 123.45;
+	if (m_channel < 0 || m_channel>7)
+		return -1;
+	unsigned char buffer[3] = { 1 }; // start bit
+	buffer[1] = (8 + m_channel) << 4;
+	wiringPiSPIDataRW(0, buffer, 3);
+	return ((buffer[1] & 3) << 8) + buffer[2]; // get last 10 bits
 }
 
 void SPI_SENSOR::run()
