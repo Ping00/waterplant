@@ -55,12 +55,12 @@ void Horizontal_Menu::handle(int input)
 
 void Horizontal_Menu::update()
 {
-	m_test.set_message(m_menu_selection);
-
+	//Set base colors for all messages
 	m_option_settings.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_option_statistics.set_message_color(GUI_COLOR_WHITE_BLUE);
 	m_option_status.set_message_color(GUI_COLOR_WHITE_BLUE);
 
+	//Set currently selected message color to highlighted
 	switch (m_menu_selection)
 	{
 		case 0:

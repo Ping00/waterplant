@@ -18,6 +18,13 @@ GUI_Statistics::GUI_Statistics()
 	m_splitting_line.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_horizontal_menu.set_highlight(1);
+
+
+	//
+	m_time_since_last_watering_text.set_message_max_length(20);
+	m_time_since_last_watering_text.set_message("INPUT");
+	m_time_since_last_watering_text.set_message_color(GUI_COLOR_WHITE_BLUE);
+	m_time_since_last_watering_text.set_position(4, 8);
 }
 
 GUI_Statistics::~GUI_Statistics()
@@ -27,6 +34,9 @@ GUI_Statistics::~GUI_Statistics()
 
 void GUI_Statistics::handle(int input)
 {
+
+	m_time_since_last_watering_text.set_message(input);
+
 	if (input == INPUT_KEY_RETURN)
 	{
 		m_return = true;
@@ -54,4 +64,6 @@ void GUI_Statistics::render()
 	m_current_menu_title.render();
 	m_splitting_line.render();
 	m_horizontal_menu.render();
+
+	m_time_since_last_watering_text.render();
 }

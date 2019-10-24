@@ -7,7 +7,7 @@
 #include <iomanip>
 std::string Utilities::get_current_time()
 {
-	
+	/*
 	//LINUX
 	struct tm newtime;
 	time_t ltime;
@@ -19,19 +19,22 @@ std::string Utilities::get_current_time()
 	ss  << std::setw(2) << std::setfill('0') << newtime.tm_hour << ":" 
 		<< std::setw(2) << std::setfill('0') << newtime.tm_min << ":"
 		<< std::setw(2) << std::setfill('0') << newtime.tm_sec;
-	
+
+		return std::string(ss.str());
+	*/
+
 	//WINDOWS
-	/*
+	
 	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 	std::time_t now_c = std::chrono::system_clock::to_time_t(now);
 	std::tm newtime;
 
-	localtime_r(&newtime, &now_c);
+	localtime_s(&newtime, &now_c);
 
 	char buffer[20];
 	strftime(buffer, sizeof(buffer), "%H:%M:%S", &newtime);
-	*/
-	return std::string(ss.str());
+	
+	return std::string(buffer);
 }
 
 std::string Utilities::get_time_difference(std::chrono::high_resolution_clock::time_point time)

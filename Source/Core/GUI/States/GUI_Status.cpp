@@ -98,10 +98,8 @@ void GUI_Status::handle(int input)
 
 void GUI_Status::update(std::unique_ptr<GUI_BASE>& menu, Controller& controller)
 {
-	//Update text statuses
-
+	//Update text statuses by polling devices from controller and utilities
 	m_runtime_data.set_message(Utilities::get_time_difference(controller.get_system_start()));
-
 	m_controller_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_controller_initlialized()));
 	m_valve_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_valve_initialized()));
 	m_mcp_status_data.set_message(Utilities::get_ok_error_state_msg(controller.get_mcp3008_initialized()));
@@ -136,9 +134,6 @@ void GUI_Status::render()
 
 	m_mcp_status_text.render();
 	m_mcp_status_data.render();
-
-	//m_active_mcp_devices_text.render();
-	//m_active_mcp_devices_data.render();
 
 	m_sensor_moisture_status_data.render();
 	m_sensor_moisture_status_text.render();

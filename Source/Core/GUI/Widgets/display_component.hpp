@@ -19,7 +19,6 @@ class Display_Component
 		void set_position(int x, int y);
 		void set_message_color(int color);
 		void render();
-		void set_optional();
 
 
 };

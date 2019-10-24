@@ -33,6 +33,7 @@ class GUI_Status : public GUI_BASE
 		Display_Component	m_sensor_moisture_status_text;
 		Display_Component	m_sensor_moisture_status_data;
 
+
 	public:
 		GUI_Status();
 		~GUI_Status();

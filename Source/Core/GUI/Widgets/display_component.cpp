@@ -43,8 +43,3 @@ void Display_Component::render()
 	printw(m_message.get_message().c_str());
 	attroff(COLOR_PAIR(m_color));
 }
-
-void Display_Component::set_optional()
-{
-	//Colors etc
-}
