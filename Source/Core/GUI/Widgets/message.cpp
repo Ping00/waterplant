@@ -17,7 +17,8 @@ void Message::set_max_length(int length)
 
 void Message::set_message(std::string message)
 {
-	if (m_message_length < message.size())
+	int msg_length = message.size();
+	if (m_message_length < msg_length)
 	{
 		m_message = "ERR";
 		return;
