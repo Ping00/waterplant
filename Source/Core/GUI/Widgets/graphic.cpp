@@ -26,11 +26,11 @@ void Graphic::load_graphic(std::string file)
 	
 	std::vector<std::string> image_row;
 	image_row.push_back("__          __   _                  _             _   ");
-	image_row.push_back("\\\ \\\        / /  | |                | |           | |  ");
-	image_row.push_back(" \\\ \\\  /\\\  / /_ _| |_ ___ _ __ _ __ | | __ _ _ __ | |_ ");
-	image_row.push_back("  \\\ \\\/  \\\/ / _` | __/ _ \\\ '__| '_ \\\| |/ _` | '_ \\\| __|");
-	image_row.push_back("   \\\  /\\\  / (_| | ||  __/ |  | |_) | | (_| | | | | |_ ");
-	image_row.push_back("    \\\/  \\\/ \\\__,_|\\\__\\\___|_|  | .__/|_|\\\__,_|_| |_|\\\__|");
+	image_row.push_back("\\ \\        / /  | |                | |           | |  ");
+	image_row.push_back(" \\ \\  /\\  / /_ _| |_ ___ _ __ _ __ | | __ _ _ __ | |_ ");
+	image_row.push_back("  \\ \\/  \\/ / _` | __/ _ \\ '__| '_ \\| |/ _` | '_ \\| __|");
+	image_row.push_back("   \\  /\\  / (_| | ||  __/ |  | |_) | | (_| | | | | |_ ");
+	image_row.push_back("    \\/  \\/ \\__,_|\\__\\___|_|  | .__/|_|\\__,_|_| |_|\\__|");
 	image_row.push_back("                             | |                      ");
 	image_row.push_back("                             |_|                      ");
 
