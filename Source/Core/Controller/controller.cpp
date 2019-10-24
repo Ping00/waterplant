@@ -54,7 +54,7 @@ void Controller::check()
 
 
 	//Get current sensor values and related data
-	int moisture_rating = m_mcp3008.get_data(1);
+	int moisture_rating = (int)m_mcp3008.get_data(1);
 	int valve_open = m_valve.get_open_value();
 	int valve_close = m_valve.get_close_value();
 

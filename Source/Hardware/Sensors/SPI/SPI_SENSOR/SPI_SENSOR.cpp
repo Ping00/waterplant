@@ -55,9 +55,22 @@ double SPI_SENSOR::poll_sensor()
 	//Get data here
 	/*We would replace this with our Wiringpi implemntation*/
 	//TODO USE M_CHANNEL TO USE PROPER MCP3008 channel
-	double data_poll = 123.45;
-
-	return data_poll;
+	
+	//PI
+	/*
+	if(m_initialized)
+    {
+        unsigned char buffer[3] = {1};
+        buffer[1] = (8 + 0) << 4;
+        wiringPiSPIDataRW(m_channel, buffer, 3);
+        return ( (buffer[1] & 3) << 8 ) + buffer[2];
+    }
+    else
+    {
+      	return -1.0;
+    }
+	*/
+	return 123.45;
 }
 
 void SPI_SENSOR::run()

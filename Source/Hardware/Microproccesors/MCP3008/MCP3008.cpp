@@ -1,9 +1,12 @@
 #include "MCP3008.hpp"
 #include <iostream>
+//#include <wiringPi.h>
+//#include <wiringPiSPI.h>
 MCP3008::MCP3008()
 {
 	std::cout << "Constructor called for MCP3008 :> (" << this << ")" << std::endl;
 	m_initialized	= false;
+	m_file_descriptor = -1;
 }
 
 MCP3008::~MCP3008()
@@ -13,7 +16,21 @@ MCP3008::~MCP3008()
 
 bool MCP3008::init(int channel, int clock)
 {
-	//Init all our sensors, give them
+	/*
+	//PI
+    //Start MCP3008 connection with wiringpi
+    m_file_descriptor = wiringPiSPISetup(spi_channel, 1000000);
+    if(m_file_descriptor < 0)
+    {
+        std::cout << "Failed to open SPI BUS" << std::endl;
+        m_initialized = false;
+        return m_initialized;
+    }
+
+    wiringPiSetup();
+	*/
+
+	//Init all our sensors,
 	m_tmp36.init(0);
 	m_smsm.init(1);
 

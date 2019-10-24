@@ -25,59 +25,72 @@ GUI_Status::GUI_Status()
 	m_runtime_text.set_message_max_length(24);
 	m_runtime_text.set_position(4, 7);
 	m_runtime_text.set_message("Total Runtime (Session):");
+	m_runtime_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_runtime_data.set_message_max_length(24);
 	m_runtime_data.set_position(32, 7);
 	m_runtime_data.set_message("00:00:00");
+	m_runtime_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_controller_status_text.set_message_max_length(20);
 	m_controller_status_text.set_position(4, 9);
 	m_controller_status_text.set_message("Controller Status:");
+	m_controller_status_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_controller_status_data.set_message_max_length(20);
 	m_controller_status_data.set_position(32, 9);
 	m_controller_status_data.set_message("[ ??? ]");
+	m_controller_status_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_valve_status_text.set_message_max_length(20);
 	m_valve_status_text.set_position(4, 11);
 	m_valve_status_text.set_message("Valve Status:");
+	m_valve_status_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_valve_status_data.set_message_max_length(20);
 	m_valve_status_data.set_position(32, 11);
 	m_valve_status_data.set_message("[ ??? ]");
+	m_valve_status_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_mcp_status_text.set_message_max_length(20);
 	m_mcp_status_text.set_position(4, 13);
 	m_mcp_status_text.set_message("MCP3008 Status:");
+	m_mcp_status_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_mcp_status_data.set_message_max_length(20);
 	m_mcp_status_data.set_position(32, 13);
 	m_mcp_status_data.set_message("[ ??? ]");
+	m_mcp_status_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_active_mcp_devices_text.set_message_max_length(20);
 	m_active_mcp_devices_text.set_position(4, 15);
 	m_active_mcp_devices_text.set_message("Registered Sensors:");
+	m_active_mcp_devices_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_active_mcp_devices_data.set_message_max_length(20);
 	m_active_mcp_devices_data.set_position(32, 15);
 	m_active_mcp_devices_data.set_message("0");
+	m_active_mcp_devices_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_sensor_temperature_status_text.set_message_max_length(20);
 	m_sensor_temperature_status_text.set_position(4, 17);
 	m_sensor_temperature_status_text.set_message("TMP36 Status:");
+	m_sensor_temperature_status_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_sensor_temperature_status_data.set_message_max_length(20);
 	m_sensor_temperature_status_data.set_position(32, 17);
 	m_sensor_temperature_status_data.set_message("[ ??? ]");
+	m_sensor_temperature_status_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_sensor_moisture_status_text.set_message_max_length(20);
 	m_sensor_moisture_status_text.set_position(4, 19);
 	m_sensor_moisture_status_text.set_message("SMSMS Status:");
+	m_sensor_moisture_status_text.set_message_color(GUI_COLOR_WHITE_BLUE);
 
 	m_sensor_moisture_status_data.set_message_max_length(20);
 	m_sensor_moisture_status_data.set_position(32, 19);
 	m_sensor_moisture_status_data.set_message("[ ??? ]");
-
+	m_sensor_moisture_status_data.set_message_color(GUI_COLOR_WHITE_BLUE);
 }
 
 GUI_Status::~GUI_Status()

@@ -9,6 +9,7 @@ class MCP3008
 	private:
 		bool				m_initialized;
 
+		int                 m_file_descriptor;
 		int					m_spi_channel;
 		int					m_clock_speed_hz;
 
@@ -20,7 +21,7 @@ class MCP3008
 		TMP36				m_tmp36;
 		SMSM				m_smsm;
 
-	
+
 
 	public:
 		MCP3008();
@@ -29,7 +30,7 @@ class MCP3008
 		bool init(int channel, int clock);
 
 		double get_data(int channel);
-		
+
 		//bool add_sensor(int channel, SENSOR sensor);
 		//void remove_sensor(int channel);
 
