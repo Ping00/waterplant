@@ -41,18 +41,19 @@ class SPI_SENSOR
 		void	write(double data);
 
 
-public:
-	SPI_SENSOR();
-	virtual ~SPI_SENSOR();
+	public:
+		SPI_SENSOR();
+		virtual ~SPI_SENSOR();
 
-	//Start the sensor
-	bool	init(int channel);
-	bool	get_init();
+		//Start the sensor
+		bool	init(int channel);
+		bool	get_init();
 
-	int		get_tickrate();
-	void	set_tickrate(int ms);
+		//Set tickrate
+		int		get_tickrate();
+		void	set_tickrate(int ms);
 
-	//Read the data we have stored
-	double	read();
+		//Read the data we have stored
+		double	read();
 };
 #endif // !__SPI_SENSOR_HPP__

@@ -52,12 +52,13 @@ void Controller::check()
 	//STEPS
 	//Turn on Operation LED to indicate activity,
 
-
+	
 	//Get current sensor values and related data
 	int moisture_rating = (int)m_mcp3008.get_data(1);
 	int valve_open = m_valve.get_open_value();
 	int valve_close = m_valve.get_close_value();
 
+	/*
 	//If the value is less, we open the valve
 	if (moisture_rating <= valve_open)
 	{
@@ -65,11 +66,12 @@ void Controller::check()
 		m_valve.set_valve_state(true);
 	}
 	//If it is greater we close it
-	else if (moisture_rating >= valve_close)
+	else if (moisture_rating > valve_close)
 	{
 		//Close the node which gives power to solenoid
 		m_valve.set_valve_state(false);
 	}
+	*/
 
 	//Turn of Operation LED
 }

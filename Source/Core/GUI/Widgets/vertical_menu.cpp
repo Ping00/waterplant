@@ -1,6 +1,7 @@
 #include "vertical_menu.hpp"
 #include "../../GUI/Enums/GUI_COLORS.hpp"
 #include "../../GUI/Enums/INPUT_KEYS.hpp"
+#include "../../../Utilities/WATERPLANT_FILE.hpp"
 Vertical_Menu::Vertical_Menu()
 {
 	//Default our menu index to the first item

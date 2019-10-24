@@ -11,7 +11,8 @@ SPI_SENSOR::SPI_SENSOR()
 	m_tickrate = 100;
 
 	//Set initial data to 0
-	m_data = 0;
+	m_data = -1;
+
 }
 
 SPI_SENSOR::~SPI_SENSOR()
