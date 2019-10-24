@@ -1,11 +1,11 @@
 ####################################################
 #
-# WATERPLANT V0.01 MAKEFILE
+# WATERPLANT v1.0 (Build 042) MAKEFILE
 #
 ####################################################
 
 CC = g++
-CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lcurses
+CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lcurses -std=c++17
 TARGET = waterplant
 
 # Additional Sourcefiles
