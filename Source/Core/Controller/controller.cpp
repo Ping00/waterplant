@@ -13,7 +13,7 @@ Controller::Controller()
 Controller::~Controller()
 {
 	//Join the threads if the system properly started on shutdown
-	if (m_initialized) 	
+	if (m_initialized)
 		m_thread.join();
 }
 
@@ -48,15 +48,33 @@ void Controller::run()
 }
 
 void Controller::check()
-{	
+{
 	//STEPS
 	//Turn on Operation LED to indicate activity,
 
-	
+
 	//Get current sensor values and related data
 	int moisture_rating = (int)m_mcp3008.get_data(1);
 	int valve_open = m_valve.get_open_value();
 	int valve_close = m_valve.get_close_value();
+
+	//Open the valve if value is below the open threshold
+	if (moisture_rating < valve_open)
+	{
+		m_valve.set_valve_state(true);
+	}
+
+	//While the valve is opened, keep checking if water level OK
+	while(m_valve.get_valve_state())
+    {
+        moisture_rating = (int)m_mcp3008.get_data(1);
+        if(moisture_rating >= valve_close)
+        {
+            m_valve.set_valve_state(false);
+        }
+
+        std::this_thread::sleep_for(std::chrono::millliseconds(500));
+    }
 
 	/*
 	//If the value is less, we open the valve
