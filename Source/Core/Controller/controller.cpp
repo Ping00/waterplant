@@ -4,9 +4,9 @@
 #include "../../Utilities/WATERPLANT_FILE.hpp"
 #include "../../Utilities/FILE_DATA_POSITIONS.hpp"
 #include <wiringPi.h>
-#define GPIO_RED_LED 17
-#define GPIO_YELLOW_LED 27
-#define GPIO_GREEN_LED 22
+#define GPIO_RED_LED 0
+#define GPIO_YELLOW_LED 2
+#define GPIO_GREEN_LED 3
 Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
@@ -33,23 +33,6 @@ bool Controller::init()
 	m_mcp3008.init(0, 1000000);
 	m_valve.init();
 
-	//Set Pinmodes for all pins
-	wiringPiSetup();
-
-	//RED LED = ERROR IN SYSTEM
-	pinMode(GPIO_RED_LED, OUTPUT);
-
-	//YELLOW LED = CONTROLLER ACTIVE
-	pinMode(GPIO_YELLOW_LED, OUTPUT);
-
-	//GREEN LED = VALVE OPEN
-	pinMode(GPIO_GREEN_LED, OUTPUT);
-
-	//SET ALL LEDS TO LOW
-	digitalWrite(GPIO_RED_LED, HIGH);
-	digitalWrite(GPIO_YELLOW_LED, LOW);
-	digitalWrite(GPIO_GREEN_LED, LOW);
-
 
 	//Start the thread to run valve control loop
 	m_thread = std::thread(&Controller::run, this);
@@ -60,6 +43,25 @@ bool Controller::init()
 
 void Controller::run()
 {
+	//SETUP PINS
+
+	//Set Pinmodes for all pins
+	wiringPiSetup();
+
+	//RED LED = SYSTEM IS ONLINE
+	pinMode(GPIO_RED_LED, OUTPUT);
+
+	//YELLOW LED = CONTROLLER ACTIVE
+	pinMode(GPIO_YELLOW_LED, OUTPUT);
+
+	//GREEN LED = VALVE OPEN
+	pinMode(GPIO_GREEN_LED, OUTPUT);
+
+	//SET ALL LEDS TO HIGH
+	digitalWrite(GPIO_RED_LED, HIGH);
+	digitalWrite(GPIO_YELLOW_LED, HIGH);
+	digitalWrite(GPIO_GREEN_LED, HIGH);
+
 	//TODO, change true to use engine on/off to see if system is active?
 	while (true)
 	{
@@ -67,6 +69,11 @@ void Controller::run()
 		std::this_thread::sleep_for(std::chrono::seconds(m_tickrate));
 		check();
 	}
+
+	//SET ALL LEDS TO LOW
+	digitalWrite(GPIO_RED_LED, LOW);
+	digitalWrite(GPIO_YELLOW_LED, LOW);
+	digitalWrite(GPIO_GREEN_LED, LOW);
 }
 
 void Controller::check()
