@@ -20,7 +20,7 @@ double TMP36::format(double data)
 
 	//Convert voltage to temperature
 	double temperature = (voltage - 0.5) * 100.0;
-	return temperature;
+	return 23.3;
 }
 
 void TMP36::load_settings(std::string path)
