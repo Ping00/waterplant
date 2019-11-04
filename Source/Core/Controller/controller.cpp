@@ -4,6 +4,7 @@
 #include "../../Utilities/WATERPLANT_FILE.hpp"
 #include "../../Utilities/FILE_DATA_POSITIONS.hpp"
 #include <wiringPi.h>
+#define GPIO_VALVE 1
 #define GPIO_RED_LED 0
 #define GPIO_YELLOW_LED 2
 #define GPIO_GREEN_LED 3
@@ -54,13 +55,17 @@ void Controller::run()
 	//YELLOW LED = CONTROLLER ACTIVE
 	pinMode(GPIO_YELLOW_LED, OUTPUT);
 
-	//GREEN LED = VALVE OPEN
+	//GREEN LED = VALVE STATUS OPEN
 	pinMode(GPIO_GREEN_LED, OUTPUT);
+	
+	//VALVE OPEN
+	pinMode(GPIO_VALVE, OUTPUT);
 
-	//SET ALL LEDS TO HIGH
+	//SET ALL LEDS TO LOW (EXCEPT RED)
 	digitalWrite(GPIO_RED_LED, HIGH);
-	digitalWrite(GPIO_YELLOW_LED, HIGH);
-	digitalWrite(GPIO_GREEN_LED, HIGH);
+	digitalWrite(GPIO_YELLOW_LED, LOW);
+	digitalWrite(GPIO_GREEN_LED, LOW);
+	digitalWrite(GPIO_VALVE, LOW);
 
 	//TODO, change true to use engine on/off to see if system is active?
 	while (true)
@@ -70,17 +75,14 @@ void Controller::run()
 		check();
 	}
 
-	//SET ALL LEDS TO LOW
-	digitalWrite(GPIO_RED_LED, LOW);
-	digitalWrite(GPIO_YELLOW_LED, LOW);
-	digitalWrite(GPIO_GREEN_LED, LOW);
 }
 
 void Controller::check()
 {
 	//Turn on Operation LED to indicate activity,
 	digitalWrite(GPIO_YELLOW_LED, HIGH);
-
+	std::this_thread::sleep_for(std::chrono::milliseconds(200));
+	
 	//Get current sensor values and related data
 	int moisture_rating = (int)m_mcp3008.get_data(1);
 	int value_to_open_valve = m_valve.get_open_value();
@@ -91,6 +93,9 @@ void Controller::check()
 	{
 		//Turn on VALVE LED
 		digitalWrite(GPIO_GREEN_LED, HIGH);
+		//TURN ON VALVE GPIO
+
+		digitalWrite(GPIO_VALVE, HIGH);
 
 		//Open the valve
 		m_valve.set_valve_state(true);
@@ -99,12 +104,13 @@ void Controller::check()
 		while (m_valve.get_valve_state() == true)
 		{
 			//Alternate Indicator (OFF/ON) To show that system is thinking while watering
-			digitalWrite(GPIO_YELLOW_LED, LOW);
+			digitalWrite(GPIO_YELLOW_LED, HIGH);
 
 			//Sleep for periodic check
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+			std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
-			digitalWrite(GPIO_YELLOW_LED, HIGH);
+			digitalWrite(GPIO_YELLOW_LED, LOW);
+			std::this_thread::sleep_for(std::chrono::milliseconds(300));
 			
 			//Update our periodic values if they have been changed in settings
 			moisture_rating = (int)m_mcp3008.get_data(1);
@@ -116,7 +122,8 @@ void Controller::check()
 				m_valve.set_valve_state(false);
 				//Turn off VALVE LED
 				digitalWrite(GPIO_GREEN_LED, LOW);
-
+				//TURN OFF VALVE
+				digitalWrite(GPIO_VALVE, LOW);
 			}
 		}
 	}
