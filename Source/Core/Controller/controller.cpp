@@ -3,6 +3,7 @@
 #include <chrono>
 #include "../../Utilities/WATERPLANT_FILE.hpp"
 #include "../../Utilities/FILE_DATA_POSITIONS.hpp"
+#include <wiringPi.h>
 #define GPIO_RED_LED 17
 #define GPIO_YELLOW_LED 27
 #define GPIO_GREEN_LED 22
@@ -64,9 +65,8 @@ void Controller::run()
 
 void Controller::check()
 {
-	//STEPS
 	//Turn on Operation LED to indicate activity,
-
+	digitalWrite(GPIO_YELLOW_LED, HIGH);
 
 	//Get current sensor values and related data
 	int moisture_rating = (int)m_mcp3008.get_data(1);
@@ -76,16 +76,23 @@ void Controller::check()
 	//Check if the value is below the threshold
 	if (moisture_rating < value_to_open_valve)
 	{
+		//Turn on VALVE LED
+		digitalWrite(GPIO_GREEN_LED, HIGH);
+
 		//Open the valve
 		m_valve.set_valve_state(true);
-		//POWER LEDS ON!
 
 		//Loop while valve is open to see if it needs to be closed
 		while (m_valve.get_valve_state() == true)
 		{
+			//Alternate Indicator (OFF/ON) To show that system is thinking while watering
+			digitalWrite(GPIO_YELLOW_LED, LOW);
+
 			//Sleep for periodic check
 			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
+			digitalWrite(GPIO_YELLOW_LED, HIGH);
+			
 			//Update our periodic values if they have been changed in settings
 			moisture_rating = (int)m_mcp3008.get_data(1);
 			value_to_open_valve = m_valve.get_open_value();
@@ -94,11 +101,15 @@ void Controller::check()
 			if (moisture_rating >= value_to_close_valve)
 			{
 				m_valve.set_valve_state(false);
-				//POWER LEDS OFF!
+				//Turn off VALVE LED
+				digitalWrite(GPIO_GREEN_LED, LOW);
 
 			}
 		}
 	}
+
+	//Turn off Operations Led
+	digitalWrite(GPIO_YELLOW_LED, LOW);
 }
 
 int Controller::get_tickrate()
