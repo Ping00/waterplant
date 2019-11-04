@@ -18,7 +18,7 @@ bool MCP3008::init(int channel, int clock)
 {
 	//The pi has two channels 0 & 1
 	int spi_channel = 0;
-
+	
 	//Load SPI Drivers
 	if (system("gpio load spi") == -1)
 	{
@@ -26,6 +26,7 @@ bool MCP3008::init(int channel, int clock)
 		return false;
 	}
 
+	
 	//Setup Wiringpi
 	wiringPiSetup();
 
@@ -35,7 +36,7 @@ bool MCP3008::init(int channel, int clock)
 		std::cout << "Failed to open SPI BUS: " << std::endl;
 		return false;
 	}
-
+	
 	//Init Sensors
 	m_tmp36.init(0);
 	m_smsm.init(1);

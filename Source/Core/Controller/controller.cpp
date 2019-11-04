@@ -55,43 +55,35 @@ void Controller::check()
 
 	//Get current sensor values and related data
 	int moisture_rating = (int)m_mcp3008.get_data(1);
-	int valve_open = m_valve.get_open_value();
-	int valve_close = m_valve.get_close_value();
+	int value_to_open_valve = m_valve.get_open_value();
+	int value_to_close_valve = m_valve.get_close_value();
 
-	//Open the valve if value is below the open threshold
-	if (moisture_rating < valve_open)
+	//Check if the value is below the threshold
+	if (moisture_rating < value_to_open_valve)
 	{
+		//Open the valve
 		m_valve.set_valve_state(true);
+		//POWER LEDS ON!
+
+		//Loop while valve is open to see if it needs to be closed
+		while (m_valve.get_valve_state() == true)
+		{
+			//Sleep for periodic check
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+			//Update our periodic values if they have been changed in settings
+			moisture_rating = (int)m_mcp3008.get_data(1);
+			value_to_open_valve = m_valve.get_open_value();
+			value_to_close_valve = m_valve.get_close_value();
+
+			if (moisture_rating >= value_to_close_valve)
+			{
+				m_valve.set_valve_state(false);
+				//POWER LEDS OFF!
+
+			}
+		}
 	}
-
-	//While the valve is opened, keep checking if water level OK
-	while(m_valve.get_valve_state())
-    {
-        moisture_rating = (int)m_mcp3008.get_data(1);
-        if(moisture_rating >= valve_close)
-        {
-            m_valve.set_valve_state(false);
-        }
-
-        std::this_thread::sleep_for(std::chrono::millliseconds(500));
-    }
-
-	/*
-	//If the value is less, we open the valve
-	if (moisture_rating <= valve_open)
-	{
-		//Power the Node which gives power to solenoid
-		m_valve.set_valve_state(true);
-	}
-	//If it is greater we close it
-	else if (moisture_rating > valve_close)
-	{
-		//Close the node which gives power to solenoid
-		m_valve.set_valve_state(false);
-	}
-	*/
-
-	//Turn of Operation LED
 }
 
 int Controller::get_tickrate()

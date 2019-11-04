@@ -55,6 +55,7 @@ void SPI_SENSOR::set_tickrate(int ms)
 
 double SPI_SENSOR::poll_sensor()
 {
+	
 	//Get data here
 	/*We would replace this with our Wiringpi implemntation*/
 	//TODO USE M_CHANNEL TO USE PROPER MCP3008 channel
@@ -66,6 +67,8 @@ double SPI_SENSOR::poll_sensor()
 	buffer[1] = (8 + m_channel) << 4;
 	wiringPiSPIDataRW(0, buffer, 3);
 	return ((buffer[1] & 3) << 8) + buffer[2]; // get last 10 bits
+	
+	//return 90.0;
 }
 
 void SPI_SENSOR::run()
