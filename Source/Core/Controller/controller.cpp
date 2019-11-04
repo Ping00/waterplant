@@ -3,6 +3,9 @@
 #include <chrono>
 #include "../../Utilities/WATERPLANT_FILE.hpp"
 #include "../../Utilities/FILE_DATA_POSITIONS.hpp"
+#define GPIO_RED_LED 17
+#define GPIO_YELLOW_LED 27
+#define GPIO_GREEN_LED 22
 Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
@@ -28,6 +31,18 @@ bool Controller::init()
 	//Initialize the Analog Digital Converter (MCP3008)
 	m_mcp3008.init(0, 1000000);
 	m_valve.init();
+
+	//Set Pinmodes for all pins
+
+	//RED LED = ERROR IN SYSTEM
+	pinMode(GPIO_RED_LED, OUTPUT);
+
+	//YELLOW LED = CONTROLLER ACTIVE
+	pinMode(GPIO_YELLOW_LED, OUTPUT);
+
+	//GREEN LED = VALVE OPEN
+	pinMode(GPIO_GREEN_LED, OUTPUT);
+
 
 	//Start the thread to run valve control loop
 	m_thread = std::thread(&Controller::run, this);
