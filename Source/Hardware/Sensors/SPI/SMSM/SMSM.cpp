@@ -12,7 +12,7 @@ SMSM::~SMSM()
 double SMSM::format(double data)
 {
 	//SMSM has no proper formatting, uses raw data
-	return 100.0;
+	return data;
 }
 
 void SMSM::load_settings(std::string path)
