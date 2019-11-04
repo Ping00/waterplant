@@ -34,6 +34,7 @@ bool Controller::init()
 	m_valve.init();
 
 	//Set Pinmodes for all pins
+	wiringPiSetup();
 
 	//RED LED = ERROR IN SYSTEM
 	pinMode(GPIO_RED_LED, OUTPUT);
@@ -43,6 +44,11 @@ bool Controller::init()
 
 	//GREEN LED = VALVE OPEN
 	pinMode(GPIO_GREEN_LED, OUTPUT);
+
+	//SET ALL LEDS TO LOW
+	digitalWrite(GPIO_RED_LED, HIGH);
+	digitalWrite(GPIO_YELLOW_LED, LOW);
+	digitalWrite(GPIO_GREEN_LED, LOW);
 
 
 	//Start the thread to run valve control loop
