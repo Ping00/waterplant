@@ -25,6 +25,9 @@ class Controller
 		//The update rate of our controller
 		int				m_tickrate;
 
+		//Value where we stop the valve if our sensor returns this behavior
+		int             m_lockout;
+
 		//Custom thread to handle status checking of waterplantation
 		std::thread		m_thread;
 

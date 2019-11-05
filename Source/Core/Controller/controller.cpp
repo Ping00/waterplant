@@ -12,6 +12,7 @@ Controller::Controller()
 {
 	std::cout << "Constructor called for Controller :> (" << this << ")" << std::endl;
 	m_initialized = false;
+	m_lockout = 5;
 
 }
 
@@ -57,7 +58,7 @@ void Controller::run()
 
 	//GREEN LED = VALVE STATUS OPEN
 	pinMode(GPIO_GREEN_LED, OUTPUT);
-	
+
 	//VALVE OPEN
 	pinMode(GPIO_VALVE, OUTPUT);
 
@@ -79,14 +80,24 @@ void Controller::run()
 
 void Controller::check()
 {
-	//Turn on Operation LED to indicate activity,
-	digitalWrite(GPIO_YELLOW_LED, HIGH);
-	std::this_thread::sleep_for(std::chrono::milliseconds(200));
-	
+
 	//Get current sensor values and related data
 	int moisture_rating = (int)m_mcp3008.get_data(1);
 	int value_to_open_valve = m_valve.get_open_value();
 	int value_to_close_valve = m_valve.get_close_value();
+
+    /*
+	//Check if we are within our lockout value
+	if(moisture_rating < m_lockout)
+    {
+        //Leave as the sensor does not operate correctly
+        return;
+    }
+    */
+
+	//Turn on Operation LED to indicate activity,
+	digitalWrite(GPIO_YELLOW_LED, HIGH);
+	std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
 	//Check if the value is below the threshold
 	if (moisture_rating < value_to_open_valve)
@@ -103,6 +114,19 @@ void Controller::check()
 		//Loop while valve is open to see if it needs to be closed
 		while (m_valve.get_valve_state() == true)
 		{
+
+            /*
+		    //Check if we are within lockout, (Somebody may have pulled the sensor)
+            if(moisture_rating < m_lockout)
+            {
+                //Turn off valve and signals if lockout is hit
+                digitalWrite(GPIO_VALVE, LOW);
+                digitalWrite(GPIO_YELLOW_LED, LOW);
+                digitalWrite(GPIO_GREEN_LED, LOW);
+                return;
+            }
+            */
+
 			//Alternate Indicator (OFF/ON) To show that system is thinking while watering
 			digitalWrite(GPIO_YELLOW_LED, HIGH);
 
@@ -111,7 +135,7 @@ void Controller::check()
 
 			digitalWrite(GPIO_YELLOW_LED, LOW);
 			std::this_thread::sleep_for(std::chrono::milliseconds(300));
-			
+
 			//Update our periodic values if they have been changed in settings
 			moisture_rating = (int)m_mcp3008.get_data(1);
 			value_to_open_valve = m_valve.get_open_value();
